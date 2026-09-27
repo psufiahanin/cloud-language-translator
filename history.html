@@ -1,0 +1,2223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Translation History - CloudTranslate</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <style>
+
+        /* =========================================
+           CLOUDTRANSLATE HISTORY
+           SAGE GREEN + CREAM THEME
+        ========================================= */
+
+        :root {
+
+            --cream: #faf7ef;
+            --cream-dark: #f1eadb;
+
+            --sage: #dce8df;
+            --sage-light: #edf4ee;
+
+            --teal: #2f6f68;
+            --dark-teal: #174f4a;
+
+            --text: #18322f;
+            --muted: #647874;
+
+            --white: #ffffff;
+
+            --border: #dce5df;
+
+            --shadow:
+                0 12px 35px
+                rgba(23, 79, 74, 0.10);
+        }
+
+
+        /* =========================================
+           PAGE
+        ========================================= */
+
+        body {
+
+            margin: 0;
+
+            background: var(--cream);
+
+            color: var(--text);
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            transition:
+                background 0.3s ease,
+                color 0.3s ease;
+        }
+
+
+        /* =========================================
+           NAVBAR
+        ========================================= */
+
+        .navbar {
+
+            width: 100%;
+
+            box-sizing: border-box;
+
+            padding: 18px 7%;
+
+            background:
+                rgba(250, 247, 239, 0.96);
+
+            border-bottom:
+                1px solid var(--border);
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            backdrop-filter:
+                blur(12px);
+        }
+
+
+        .nav-container {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            max-width: 1180px;
+
+            margin: auto;
+        }
+
+
+        .logo {
+
+            color:
+                var(--dark-teal);
+
+            text-decoration: none;
+
+            font-size: 21px;
+
+            font-weight: 800;
+        }
+
+
+        .nav-links {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 26px;
+        }
+
+
+        .nav-links a {
+
+            color:
+                var(--muted);
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            transition: 0.2s ease;
+        }
+
+
+        .nav-links a:hover,
+        .nav-links a.active {
+
+            color:
+                var(--teal);
+        }
+
+
+        .nav-links a.active {
+
+            position: relative;
+        }
+
+
+        .nav-links a.active::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            right: 0;
+
+            bottom: -8px;
+
+            height: 2px;
+
+            background:
+                var(--teal);
+
+            border-radius: 5px;
+        }
+
+
+        .theme-toggle {
+
+            width: 38px;
+
+            height: 38px;
+
+            border: 1px solid
+                var(--border);
+
+            border-radius: 50%;
+
+            background:
+                var(--white);
+
+            cursor: pointer;
+
+            font-size: 17px;
+
+            transition: 0.2s ease;
+        }
+
+
+        .theme-toggle:hover {
+
+            transform:
+                translateY(-2px);
+
+            border-color:
+                var(--teal);
+        }
+
+
+        /* =========================================
+           MAIN
+        ========================================= */
+
+        .history-page {
+
+            width: 86%;
+
+            max-width: 1180px;
+
+            margin: auto;
+
+            padding:
+                60px 0 80px;
+        }
+
+
+        /* =========================================
+           HERO
+        ========================================= */
+
+        .history-hero {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 30px;
+
+            padding:
+                45px 50px;
+
+            margin-bottom: 30px;
+
+            background:
+                var(--sage-light);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 26px;
+        }
+
+
+        .history-hero-content {
+
+            max-width: 700px;
+        }
+
+
+        .history-hero-badge {
+
+            display: inline-block;
+
+            margin-bottom: 14px;
+
+            padding:
+                8px 13px;
+
+            background:
+                var(--white);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 30px;
+
+            color:
+                var(--teal);
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+        }
+
+
+        .history-hero h1 {
+
+            margin: 0;
+
+            color:
+                var(--dark-teal);
+
+            font-size:
+                clamp(35px, 5vw, 55px);
+
+            line-height: 1.1;
+
+            letter-spacing:
+                -1.5px;
+        }
+
+
+        .history-hero p {
+
+            max-width: 580px;
+
+            margin:
+                17px 0 0;
+
+            color:
+                var(--muted);
+
+            font-size: 16px;
+
+            line-height: 1.7;
+        }
+
+
+        .history-hero-icon {
+
+            width: 105px;
+
+            height: 105px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                var(--teal);
+
+            border-radius: 30px;
+
+            color: white;
+
+            font-size: 45px;
+
+            box-shadow:
+                0 12px 25px
+                rgba(47,111,104,0.20);
+        }
+
+
+        /* =========================================
+           FEATURE CARDS
+        ========================================= */
+
+        .history-features {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+
+            margin-bottom: 28px;
+        }
+
+
+        .history-feature-card {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 14px;
+
+            padding: 21px;
+
+            background:
+                var(--white);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 18px;
+
+            transition: 0.25s ease;
+        }
+
+
+        .history-feature-card:hover {
+
+            transform:
+                translateY(-4px);
+
+            box-shadow:
+                var(--shadow);
+        }
+
+
+        .history-feature-icon {
+
+            width: 45px;
+
+            height: 45px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                var(--sage);
+
+            border-radius: 13px;
+
+            font-size: 20px;
+        }
+
+
+        .history-feature-card h3 {
+
+            margin:
+                0 0 6px;
+
+            color:
+                var(--dark-teal);
+
+            font-size: 14px;
+
+            font-weight: 800;
+        }
+
+
+        .history-feature-card p {
+
+            margin: 0;
+
+            color:
+                var(--muted);
+
+            font-size: 12px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================================
+           STATISTICS
+        ========================================= */
+
+        .history-stats {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+
+            margin-bottom: 28px;
+        }
+
+
+        .history-stat-card {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 16px;
+
+            padding: 23px;
+
+            background:
+                var(--white);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 18px;
+
+            transition: 0.25s ease;
+        }
+
+
+        .history-stat-card:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                var(--shadow);
+        }
+
+
+        .history-stat-icon {
+
+            width: 50px;
+
+            height: 50px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                var(--sage);
+
+            border-radius: 14px;
+
+            font-size: 21px;
+        }
+
+
+        .history-stat-card span {
+
+            display: block;
+
+            margin-bottom: 5px;
+
+            color:
+                var(--muted);
+
+            font-size: 12px;
+        }
+
+
+        .history-stat-card strong {
+
+            display: block;
+
+            color:
+                var(--dark-teal);
+
+            font-size: 21px;
+
+            word-break: break-word;
+        }
+
+
+        /* =========================================
+           HISTORY CARD
+        ========================================= */
+
+        .history-card {
+
+            background:
+                var(--white);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 24px;
+
+            box-shadow:
+                var(--shadow);
+
+            overflow: hidden;
+
+            margin-bottom: 28px;
+        }
+
+
+        .history-card-header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding:
+                28px 30px;
+
+            border-bottom:
+                1px solid var(--border);
+        }
+
+
+        .history-section-label {
+
+            color:
+                var(--teal);
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.4px;
+        }
+
+
+        .history-card-header h2 {
+
+            margin:
+                6px 0;
+
+            color:
+                var(--dark-teal);
+
+            font-size: 25px;
+        }
+
+
+        .history-card-header p {
+
+            margin: 0;
+
+            color:
+                var(--muted);
+
+            font-size: 13px;
+        }
+
+
+        /* =========================================
+           CLEAR BUTTON
+        ========================================= */
+
+        .clear-history-button {
+
+            padding:
+                11px 16px;
+
+            border:
+                1px solid #e4caca;
+
+            border-radius: 10px;
+
+            background:
+                #fff7f7;
+
+            color:
+                #a13b3b;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+
+            white-space: nowrap;
+        }
+
+
+        .clear-history-button:hover {
+
+            background:
+                #fceaea;
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        /* =========================================
+           TABLE
+        ========================================= */
+
+        .history-table-wrapper {
+
+            width: 100%;
+
+            overflow-x: auto;
+        }
+
+
+        .history-card table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 760px;
+        }
+
+
+        .history-card th {
+
+            padding:
+                15px 18px;
+
+            text-align: left;
+
+            background:
+                var(--sage-light);
+
+            color:
+                var(--dark-teal);
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 0.5px;
+
+            border-bottom:
+                1px solid var(--border);
+        }
+
+
+        .history-card td {
+
+            padding:
+                17px 18px;
+
+            border-bottom:
+                1px solid var(--border);
+
+            color:
+                var(--text);
+
+            font-size: 12px;
+
+            vertical-align: middle;
+        }
+
+
+        .history-card tbody tr {
+
+            transition:
+                background 0.2s ease;
+        }
+
+
+        .history-card tbody tr:hover {
+
+            background:
+                var(--sage-light);
+        }
+
+
+        .history-preview-text {
+
+            max-width: 220px;
+
+            color:
+                var(--muted) !important;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+        }
+
+
+        /* =========================================
+           VIEW BUTTON
+        ========================================= */
+
+        .history-view-button {
+
+            padding:
+                8px 14px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 9px;
+
+            background:
+                var(--sage-light);
+
+            color:
+                var(--teal);
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+
+        .history-view-button:hover {
+
+            background:
+                var(--teal);
+
+            color: white;
+
+            border-color:
+                var(--teal);
+        }
+
+
+        /* =========================================
+           EMPTY HISTORY
+        ========================================= */
+
+        .empty-history {
+
+            padding:
+                60px 20px;
+
+            text-align: center;
+        }
+
+
+        .empty-icon {
+
+            font-size: 42px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .empty-history h3 {
+
+            margin:
+                0 0 8px;
+
+            color:
+                var(--dark-teal);
+
+            font-size: 19px;
+        }
+
+
+        .empty-history p {
+
+            margin:
+                0 0 20px;
+
+            color:
+                var(--muted);
+
+            font-size: 13px;
+        }
+
+
+        .history-translate-button {
+
+            display: inline-block;
+
+            padding:
+                11px 17px;
+
+            background:
+                var(--teal);
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 10px;
+
+            font-size: 12px;
+
+            font-weight: 800;
+        }
+
+
+        .history-translate-button:hover {
+
+            background:
+                var(--dark-teal);
+        }
+
+
+        /* =========================================
+           INFO CARDS
+        ========================================= */
+
+        .history-info-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+
+            margin-bottom: 28px;
+        }
+
+
+        .history-info-card {
+
+            padding: 24px;
+
+            background:
+                var(--white);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 18px;
+
+            transition: 0.25s ease;
+        }
+
+
+        .history-info-card:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                var(--shadow);
+        }
+
+
+        .history-info-icon {
+
+            width: 45px;
+
+            height: 45px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin-bottom: 15px;
+
+            background:
+                var(--sage);
+
+            border-radius: 13px;
+
+            font-size: 20px;
+        }
+
+
+        .history-info-card h3 {
+
+            margin:
+                0 0 8px;
+
+            color:
+                var(--dark-teal);
+
+            font-size: 15px;
+        }
+
+
+        .history-info-card p {
+
+            margin: 0;
+
+            color:
+                var(--muted);
+
+            font-size: 12px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================================
+           ACTION SECTION
+        ========================================= */
+
+        .history-action {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 25px;
+
+            padding:
+                30px 35px;
+
+            background:
+                var(--dark-teal);
+
+            color: white;
+
+            border-radius: 22px;
+        }
+
+
+        .history-action h2 {
+
+            margin:
+                0 0 7px;
+
+            font-size: 24px;
+        }
+
+
+        .history-action p {
+
+            margin: 0;
+
+            color:
+                #c9dfda;
+
+            font-size: 13px;
+        }
+
+
+        .history-main-button {
+
+            display: inline-block;
+
+            padding:
+                13px 19px;
+
+            background:
+                white;
+
+            color:
+                var(--dark-teal);
+
+            text-decoration: none;
+
+            border-radius: 11px;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            white-space: nowrap;
+
+            transition: 0.2s ease;
+        }
+
+
+        .history-main-button:hover {
+
+            transform:
+                translateY(-2px);
+
+            background:
+                var(--sage-light);
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        .footer {
+
+            padding:
+                30px 7%;
+
+            background:
+                var(--dark-teal);
+
+            text-align: center;
+
+            color:
+                #c9dfda;
+
+            font-size: 12px;
+        }
+
+
+        .footer p {
+
+            margin: 0;
+        }
+
+
+        /* =========================================
+           TRANSLATION MODAL
+        ========================================= */
+
+        .translation-modal {
+
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 9999;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            background:
+                rgba(23, 79, 74, 0.55);
+
+            backdrop-filter:
+                blur(6px);
+        }
+
+
+        .translation-modal.show {
+
+            display: flex;
+        }
+
+
+        .translation-modal-box {
+
+            position: relative;
+
+            width: 100%;
+
+            max-width: 620px;
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            padding: 32px;
+
+            background:
+                var(--white);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 25px 60px
+                rgba(23,79,74,0.22);
+
+            animation:
+                translationModalIn
+                0.25s ease;
+        }
+
+
+        @keyframes translationModalIn {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(15px)
+                    scale(0.97);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+
+        /* =========================================
+           CLOSE MODAL
+        ========================================= */
+
+        .close-translation-modal {
+
+            position: absolute;
+
+            top: 18px;
+
+            right: 18px;
+
+            width: 36px;
+
+            height: 36px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 10px;
+
+            background:
+                var(--sage-light);
+
+            color:
+                var(--dark-teal);
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+
+        .close-translation-modal:hover {
+
+            background:
+                var(--sage);
+
+            transform:
+                scale(1.05);
+        }
+
+
+        /* =========================================
+           MODAL ICON
+        ========================================= */
+
+        .translation-modal-icon {
+
+            width: 52px;
+
+            height: 52px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin-bottom: 14px;
+
+            border-radius: 14px;
+
+            background:
+                var(--sage);
+
+            font-size: 24px;
+        }
+
+
+        /* =========================================
+           MODAL TITLE
+        ========================================= */
+
+        .translation-modal-box h2 {
+
+            margin: 0;
+
+            color:
+                var(--dark-teal);
+
+            font-size: 24px;
+        }
+
+
+        .translation-modal-date {
+
+            margin:
+                6px 0 20px;
+
+            color:
+                var(--muted);
+
+            font-size: 13px;
+        }
+
+
+        /* =========================================
+           LANGUAGE FLOW
+        ========================================= */
+
+        .modal-language-flow {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 24px;
+
+            padding:
+                14px 16px;
+
+            background:
+                var(--sage-light);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 12px;
+        }
+
+
+        .modal-language-flow span {
+
+            color:
+                var(--teal);
+
+            font-size: 14px;
+
+            font-weight: 800;
+        }
+
+
+        .modal-language-flow
+        .modal-arrow {
+
+            color:
+                var(--muted);
+
+            font-size: 18px;
+        }
+
+
+        /* =========================================
+           MODAL TEXT
+        ========================================= */
+
+        .modal-text-section {
+
+            margin-top: 18px;
+        }
+
+
+        .modal-text-section h3 {
+
+            margin:
+                0 0 8px;
+
+            color:
+                var(--dark-teal);
+
+            font-size: 14px;
+        }
+
+
+        .modal-text-box {
+
+            min-height: 70px;
+
+            padding: 16px;
+
+            background:
+                var(--cream);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 12px;
+
+            color:
+                var(--text);
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+            white-space: pre-wrap;
+
+            word-break: break-word;
+        }
+
+
+        .translated-modal-text {
+
+            background:
+                var(--sage-light);
+
+            border-color:
+                #bfd5ca;
+
+            color:
+                var(--dark-teal);
+        }
+
+
+        /* =========================================
+           DARK MODE
+        ========================================= */
+
+        body.dark-mode {
+
+            --cream: #102c29;
+            --cream-dark: #153c38;
+
+            --sage: #24534e;
+            --sage-light: #183d39;
+
+            --teal: #69aaa0;
+            --dark-teal: #d8ebe6;
+
+            --text: #e3efec;
+            --muted: #a8bfba;
+
+            --white: #173834;
+
+            --border: #315a55;
+        }
+
+
+        body.dark-mode .navbar {
+
+            background:
+                rgba(16,44,41,0.96);
+        }
+
+
+        body.dark-mode
+        .clear-history-button {
+
+            background:
+                #382626;
+
+            border-color:
+                #684040;
+
+            color:
+                #efaaaa;
+        }
+
+
+        body.dark-mode
+        .clear-history-button:hover {
+
+            background:
+                #4a2d2d;
+        }
+
+
+        body.dark-mode
+        .history-action {
+
+            background:
+                #0b2421;
+        }
+
+
+        body.dark-mode
+        .history-main-button {
+
+            color:
+                #102c29;
+        }
+
+
+        body.dark-mode
+        .translation-modal {
+
+            background:
+                rgba(4,25,22,0.72);
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 1000px) {
+
+            .history-features {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .history-stats {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+            .history-info-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+        }
+
+
+        @media (max-width: 750px) {
+
+            .nav-links {
+
+                gap: 12px;
+            }
+
+            .nav-links a {
+
+                font-size: 12px;
+            }
+
+            .history-page {
+
+                width: 92%;
+
+                padding-top: 40px;
+            }
+
+            .history-hero {
+
+                padding:
+                    32px 25px;
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    flex-start;
+            }
+
+            .history-hero-icon {
+
+                width: 75px;
+
+                height: 75px;
+
+                border-radius: 22px;
+
+                font-size: 30px;
+            }
+
+            .history-card-header {
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    flex-start;
+            }
+
+            .history-action {
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    flex-start;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .history-features {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+            .nav-container {
+
+                align-items:
+                    flex-start;
+
+                gap: 10px;
+            }
+
+            .nav-links {
+
+                flex-wrap:
+                    wrap;
+
+                justify-content:
+                    flex-end;
+            }
+
+            .translation-modal {
+
+                padding: 12px;
+            }
+
+            .translation-modal-box {
+
+                padding:
+                    24px 18px;
+
+                border-radius:
+                    17px;
+            }
+
+            .translation-modal-box h2 {
+
+                font-size: 20px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav class="navbar">
+
+        <div class="nav-container">
+
+            <a
+                href="index.html"
+                class="logo"
+            >
+                ☁️ CloudTranslate
+            </a>
+
+
+            <div class="nav-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="translate.html">
+                    Translate
+                </a>
+
+                <a
+                    href="history.html"
+                    class="active"
+                >
+                    History
+                </a>
+
+                <a href="login.html">
+                    Logout
+                </a>
+
+                <button
+                    id="themeToggle"
+                    class="theme-toggle"
+                    aria-label="Toggle dark mode"
+                >
+                    🌙
+                </button>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
+
+    <main class="history-page">
+
+
+        <!-- HERO -->
+
+        <section class="history-hero">
+
+            <div class="history-hero-content">
+
+                <span class="history-hero-badge">
+                    🕘 TRANSLATION ACTIVITY
+                </span>
+
+                <h1>
+                    Your Translation History
+                </h1>
+
+                <p>
+                    Track, review and manage your
+                    recent translation activity
+                    in one place.
+                </p>
+
+            </div>
+
+
+            <div class="history-hero-icon">
+                ☁️
+            </div>
+
+        </section>
+
+
+        <!-- FEATURE CARDS -->
+
+        <section class="history-features">
+
+
+            <div class="history-feature-card">
+
+                <div class="history-feature-icon">
+                    🌍
+                </div>
+
+                <div>
+
+                    <h3>
+                        Multiple Languages
+                    </h3>
+
+                    <p>
+                        Translate text between
+                        different supported languages.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="history-feature-card">
+
+                <div class="history-feature-icon">
+                    ⚡
+                </div>
+
+                <div>
+
+                    <h3>
+                        Fast Translation
+                    </h3>
+
+                    <p>
+                        Send translation requests
+                        and receive results quickly.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="history-feature-card">
+
+                <div class="history-feature-icon">
+                    ☁️
+                </div>
+
+                <div>
+
+                    <h3>
+                        Cloud Powered
+                    </h3>
+
+                    <p>
+                        Uses cloud infrastructure
+                        for reliable processing.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="history-feature-card">
+
+                <div class="history-feature-icon">
+                    🔐
+                </div>
+
+                <div>
+
+                    <h3>
+                        Secure Access
+                    </h3>
+
+                    <p>
+                        User authentication can be
+                        handled through cloud services.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- STATISTICS -->
+
+        <section class="history-stats">
+
+
+            <div class="history-stat-card">
+
+                <div class="history-stat-icon">
+                    🌐
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Translations
+                    </span>
+
+                    <strong id="totalTranslations">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="history-stat-card">
+
+                <div class="history-stat-icon">
+                    📝
+                </div>
+
+                <div>
+
+                    <span>
+                        Characters Translated
+                    </span>
+
+                    <strong id="totalCharacters">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="history-stat-card">
+
+                <div class="history-stat-icon">
+                    🕒
+                </div>
+
+                <div>
+
+                    <span>
+                        Last Translation
+                    </span>
+
+                    <strong id="lastTranslation">
+                        None
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- HISTORY TABLE -->
+
+        <section class="history-card">
+
+
+            <div class="history-card-header">
+
+                <div>
+
+                    <span class="history-section-label">
+                        RECENT ACTIVITY
+                    </span>
+
+                    <h2>
+                        Recent Translations
+                    </h2>
+
+                    <p>
+                        Click a translation to view
+                        its complete details.
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="clearHistoryButton"
+                    class="clear-history-button"
+                >
+                    🗑️ Clear History
+                </button>
+
+            </div>
+
+
+            <div class="history-table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Date
+                            </th>
+
+                            <th>
+                                From
+                            </th>
+
+                            <th>
+                                To
+                            </th>
+
+                            <th>
+                                Original Text
+                            </th>
+
+                            <th>
+                                Translation
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="historyTableBody">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- INFO CARDS -->
+
+        <section class="history-info-grid">
+
+
+            <div class="history-info-card">
+
+                <div class="history-info-icon">
+                    📊
+                </div>
+
+                <h3>
+                    Your Activity
+                </h3>
+
+                <p>
+                    Keep track of your previous
+                    translation activity and
+                    character usage.
+                </p>
+
+            </div>
+
+
+            <div class="history-info-card">
+
+                <div class="history-info-icon">
+                    ⚡
+                </div>
+
+                <h3>
+                    Quick Translation
+                </h3>
+
+                <p>
+                    Return to the translation
+                    page whenever you need
+                    another translation.
+                </p>
+
+            </div>
+
+
+            <div class="history-info-card">
+
+                <div class="history-info-icon">
+                    ☁️
+                </div>
+
+                <h3>
+                    CloudTranslate
+                </h3>
+
+                <p>
+                    A cloud-based translation
+                    system designed for fast
+                    and convenient language access.
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- START TRANSLATION -->
+
+        <section class="history-action">
+
+            <div>
+
+                <h2>
+                    Need another translation?
+                </h2>
+
+                <p>
+                    Start a new translation
+                    whenever you are ready.
+                </p>
+
+            </div>
+
+
+            <a
+                href="translate.html"
+                class="history-main-button"
+            >
+                Start New Translation →
+            </a>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <p>
+            © 2026 CloudTranslate.
+            Cloud-Based Language Translation System.
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         TRANSLATION DETAILS MODAL
+    ========================= -->
+
+    <div
+        id="translationModal"
+        class="translation-modal"
+    >
+
+        <div
+            class="translation-modal-box"
+        >
+
+
+            <button
+                id="closeTranslationModal"
+                class="close-translation-modal"
+                aria-label="Close"
+            >
+                ✕
+            </button>
+
+
+            <div class="translation-modal-icon">
+                🌐
+            </div>
+
+
+            <h2>
+                Translation Details
+            </h2>
+
+
+            <p class="translation-modal-date">
+
+                <span id="modalDate">
+                    -
+                </span>
+
+            </p>
+
+
+            <div class="modal-language-flow">
+
+                <span id="modalFromLanguage">
+                    English
+                </span>
+
+                <span class="modal-arrow">
+                    →
+                </span>
+
+                <span id="modalToLanguage">
+                    Hindi
+                </span>
+
+            </div>
+
+
+            <div class="modal-text-section">
+
+                <h3>
+                    📝 Original Text
+                </h3>
+
+                <div
+                    id="modalOriginalText"
+                    class="modal-text-box"
+                >
+                    -
+                </div>
+
+            </div>
+
+
+            <div class="modal-text-section">
+
+                <h3>
+                    🔄 Translation
+                </h3>
+
+                <div
+                    id="modalTranslatedText"
+                    class="modal-text-box translated-modal-text"
+                >
+                    -
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- HISTORY JAVASCRIPT -->
+
+    <script src="js/history.js"></script>
+
+
+    <!-- DARK MODE -->
+
+    <script>
+
+        const themeToggle =
+            document.getElementById(
+                "themeToggle"
+            );
+
+
+        const savedTheme =
+            localStorage.getItem(
+                "cloudTranslateTheme"
+            );
+
+
+        if (savedTheme === "dark") {
+
+            document.body.classList.add(
+                "dark-mode"
+            );
+
+            themeToggle.innerText =
+                "☀️";
+
+        }
+
+
+        themeToggle.addEventListener(
+            "click",
+            function () {
+
+                document.body.classList.toggle(
+                    "dark-mode"
+                );
+
+
+                if (
+                    document.body.classList.contains(
+                        "dark-mode"
+                    )
+                ) {
+
+                    themeToggle.innerText =
+                        "☀️";
+
+                    localStorage.setItem(
+                        "cloudTranslateTheme",
+                        "dark"
+                    );
+
+                } else {
+
+                    themeToggle.innerText =
+                        "🌙";
+
+                    localStorage.setItem(
+                        "cloudTranslateTheme",
+                        "light"
+                    );
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

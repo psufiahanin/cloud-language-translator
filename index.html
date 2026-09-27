@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>CloudTranslate - Home</title>
+
+<link
+    rel="stylesheet"
+    href="css/style.css"
+>
+
+<style>
+
+    /* =========================
+       CLOUDTRANSLATE HOME
+    ========================= */
+
+    :root {
+        --cream: #faf7ef;
+        --cream-dark: #f1eadb;
+        --sage: #dce8df;
+        --sage-light: #edf4ee;
+        --teal: #2f6f68;
+        --dark-teal: #174f4a;
+        --text: #18322f;
+        --muted: #647874;
+        --white: #ffffff;
+        --border: #dce5df;
+    }
+
+
+    * {
+        box-sizing: border-box;
+    }
+
+
+    body {
+        margin: 0;
+        background: var(--cream);
+        color: var(--text);
+        font-family:
+            Arial,
+            Helvetica,
+            sans-serif;
+    }
+
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    .home-navbar {
+        width: 100%;
+        background: rgba(250, 247, 239, 0.96);
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(12px);
+    }
+
+
+    .home-nav-container {
+        max-width: 1180px;
+        margin: auto;
+        padding: 16px 24px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+
+    .home-logo {
+        text-decoration: none;
+        color: var(--dark-teal);
+        font-size: 20px;
+        font-weight: 800;
+
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+
+    .home-logo-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: var(--teal);
+        color: white;
+
+        font-size: 18px;
+    }
+
+
+    .home-nav-links {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+    }
+
+
+    .home-nav-links a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+
+    .home-nav-links a:hover {
+        color: var(--teal);
+    }
+
+
+    .home-login {
+        padding: 9px 18px;
+        border: 1px solid var(--teal);
+        border-radius: 9px;
+        color: var(--teal) !important;
+    }
+
+
+    .home-get-started {
+        padding: 10px 18px;
+        border-radius: 9px;
+        background: var(--teal);
+        color: white !important;
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .home-hero {
+        max-width: 1180px;
+        margin: auto;
+        padding: 75px 24px 60px;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 55px;
+        align-items: center;
+    }
+
+
+    .hero-badge {
+        display: inline-block;
+
+        padding: 8px 14px;
+
+        background: var(--sage-light);
+        border: 1px solid var(--border);
+
+        border-radius: 30px;
+
+        color: var(--teal);
+
+        font-size: 12px;
+        font-weight: 700;
+
+        margin-bottom: 20px;
+    }
+
+
+    .home-hero h1 {
+        margin: 0;
+
+        font-size: clamp(42px, 5vw, 68px);
+
+        line-height: 1.05;
+
+        letter-spacing: -2px;
+
+        color: var(--dark-teal);
+    }
+
+
+    .hero-highlight {
+        color: var(--teal);
+    }
+
+
+    .home-hero p {
+        max-width: 550px;
+
+        margin:
+            24px 0 30px;
+
+        color: var(--muted);
+
+        font-size: 17px;
+
+        line-height: 1.7;
+    }
+
+
+    .hero-buttons {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+
+
+    .hero-primary {
+        display: inline-block;
+
+        padding: 14px 24px;
+
+        border-radius: 10px;
+
+        background: var(--teal);
+
+        color: white;
+
+        text-decoration: none;
+
+        font-size: 14px;
+
+        font-weight: 700;
+
+        box-shadow:
+            0 8px 20px
+            rgba(47, 111, 104, 0.18);
+    }
+
+
+    .hero-primary:hover {
+        background: var(--dark-teal);
+    }
+
+
+    .hero-secondary {
+        display: inline-block;
+
+        padding: 14px 24px;
+
+        border-radius: 10px;
+
+        background: transparent;
+
+        border: 1px solid var(--teal);
+
+        color: var(--teal);
+
+        text-decoration: none;
+
+        font-size: 14px;
+
+        font-weight: 700;
+    }
+
+
+    .hero-secondary:hover {
+        background: var(--sage-light);
+    }
+
+
+    /* =========================
+       HERO ILLUSTRATION
+    ========================= */
+
+    .hero-visual {
+        min-height: 430px;
+
+        position: relative;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+    }
+
+
+    .globe-container {
+        width: 310px;
+        height: 310px;
+
+        border-radius: 50%;
+
+        background:
+            radial-gradient(
+                circle at 35% 30%,
+                #ffffff 0%,
+                #dce8df 35%,
+                #a9cbc1 70%,
+                #79aaa0 100%
+            );
+
+        box-shadow:
+            0 30px 70px
+            rgba(47, 111, 104, 0.18);
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        position: relative;
+    }
+
+
+    .globe {
+        font-size: 145px;
+    }
+
+
+    .translation-icon {
+        position: absolute;
+
+        width: 64px;
+        height: 64px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        border-radius: 18px;
+
+        background: var(--teal);
+
+        color: white;
+
+        font-size: 28px;
+
+        box-shadow:
+            0 10px 25px
+            rgba(23, 79, 74, 0.2);
+    }
+
+
+    .translation-icon.one {
+        top: 55px;
+        left: 45px;
+    }
+
+
+    .translation-icon.two {
+        right: 30px;
+        bottom: 60px;
+        background: var(--dark-teal);
+    }
+
+
+    .floating-word {
+        position: absolute;
+
+        padding: 10px 16px;
+
+        background: white;
+
+        border: 1px solid var(--border);
+
+        border-radius: 12px;
+
+        color: var(--dark-teal);
+
+        font-size: 13px;
+
+        font-weight: 700;
+
+        box-shadow:
+            0 8px 25px
+            rgba(23, 79, 74, 0.08);
+    }
+
+
+    .word-one {
+        top: 35px;
+        right: 35px;
+    }
+
+
+    .word-two {
+        bottom: 50px;
+        left: 20px;
+    }
+
+
+    .word-three {
+        top: 160px;
+        left: 0;
+    }
+
+
+    /* =========================
+       FEATURES
+    ========================= */
+
+    .home-features {
+        max-width: 1180px;
+
+        margin: 0 auto;
+
+        padding:
+            20px 24px 70px;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(4, 1fr);
+
+        gap: 18px;
+    }
+
+
+    .home-feature-card {
+        padding: 25px;
+
+        background: white;
+
+        border:
+            1px solid var(--border);
+
+        border-radius: 16px;
+
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+
+    .home-feature-card:hover {
+        transform:
+            translateY(-5px);
+
+        box-shadow:
+            0 15px 35px
+            rgba(23, 79, 74, 0.08);
+    }
+
+
+    .feature-icon {
+        width: 46px;
+        height: 46px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        border-radius: 12px;
+
+        background: var(--sage);
+
+        font-size: 21px;
+
+        margin-bottom: 18px;
+    }
+
+
+    .home-feature-card h3 {
+        margin: 0 0 8px;
+
+        color: var(--dark-teal);
+
+        font-size: 16px;
+    }
+
+
+    .home-feature-card p {
+        margin: 0;
+
+        color: var(--muted);
+
+        font-size: 13px;
+
+        line-height: 1.6;
+    }
+
+
+    /* =========================
+       SUPPORTED LANGUAGES
+    ========================= */
+
+    .languages-section {
+        padding:
+            75px 24px;
+
+        background: white;
+
+        border-top:
+            1px solid var(--border);
+
+        border-bottom:
+            1px solid var(--border);
+
+        text-align: center;
+    }
+
+
+    .languages-section h2 {
+        margin: 0 0 10px;
+
+        color: var(--dark-teal);
+
+        font-size: 30px;
+    }
+
+
+    .languages-section > p {
+        margin:
+            0 auto 35px;
+
+        color: var(--muted);
+
+        font-size: 14px;
+    }
+
+
+    .language-list {
+        max-width: 1000px;
+
+        margin: auto;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(4, 1fr);
+
+        gap: 18px;
+    }
+
+
+    .language-item {
+        min-height: 70px;
+
+        padding:
+            18px 15px;
+
+        border:
+            1px solid var(--border);
+
+        background:
+            var(--cream);
+
+        border-radius: 14px;
+
+        color:
+            var(--dark-teal);
+
+        font-size: 15px;
+
+        font-weight: 700;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 10px;
+
+        box-shadow:
+            0 6px 18px
+            rgba(23, 79, 74, 0.06);
+
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease,
+            border-color 0.2s ease;
+    }
+
+
+    .language-item:hover {
+        transform:
+            translateY(-4px);
+
+        border-color:
+            var(--teal);
+
+        box-shadow:
+            0 12px 25px
+            rgba(23, 79, 74, 0.10);
+    }
+
+
+    .language-flag {
+        font-size: 25px;
+    }
+
+
+    /* =========================
+       CLOUD SECTION
+    ========================= */
+
+    .cloud-section {
+        max-width: 1180px;
+
+        margin: auto;
+
+        padding:
+            80px 24px;
+
+        display: grid;
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 50px;
+
+        align-items: center;
+    }
+
+
+    .cloud-section h2 {
+        margin: 0 0 18px;
+
+        color: var(--dark-teal);
+
+        font-size: 36px;
+
+        line-height: 1.15;
+    }
+
+
+    .cloud-section p {
+        color: var(--muted);
+
+        font-size: 15px;
+
+        line-height: 1.8;
+
+        margin-bottom: 25px;
+    }
+
+
+    .cloud-points {
+        display: grid;
+
+        gap: 12px;
+    }
+
+
+    .cloud-point {
+        display: flex;
+
+        align-items: center;
+
+        gap: 10px;
+
+        color: var(--dark-teal);
+
+        font-size: 14px;
+
+        font-weight: 600;
+    }
+
+
+    .cloud-point span {
+        width: 28px;
+        height: 28px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        background: var(--sage);
+
+        border-radius: 50%;
+
+        font-size: 13px;
+    }
+
+
+    .cloud-card {
+        padding: 45px;
+
+        min-height: 330px;
+
+        border-radius: 24px;
+
+        background:
+            linear-gradient(
+                145deg,
+                #dce8df,
+                #edf4ee
+            );
+
+        border:
+            1px solid var(--border);
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        position: relative;
+
+        overflow: hidden;
+    }
+
+
+    .cloud-big {
+        font-size: 130px;
+
+        filter:
+            drop-shadow(
+                0 15px 20px
+                rgba(23, 79, 74, 0.12)
+            );
+    }
+
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .home-cta {
+        max-width: 1120px;
+
+        margin:
+            20px auto 70px;
+
+        padding:
+            55px 40px;
+
+        border-radius: 22px;
+
+        background:
+            var(--dark-teal);
+
+        text-align: center;
+
+        color: white;
+    }
+
+
+    .home-cta h2 {
+        margin: 0 0 12px;
+
+        font-size: 32px;
+    }
+
+
+    .home-cta p {
+        margin:
+            0 auto 25px;
+
+        max-width: 550px;
+
+        color: #c9dbd7;
+
+        line-height: 1.6;
+    }
+
+
+    .cta-button {
+        display: inline-block;
+
+        padding:
+            13px 25px;
+
+        background:
+            #ffffff;
+
+        color:
+            var(--dark-teal);
+
+        border-radius: 9px;
+
+        text-decoration: none;
+
+        font-weight: 700;
+
+        font-size: 14px;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    .home-footer {
+        padding:
+            25px 24px;
+
+        border-top:
+            1px solid var(--border);
+
+        text-align: center;
+
+        background:
+            var(--cream-dark);
+
+        color:
+            var(--muted);
+
+        font-size: 12px;
+    }
+
+
+    /* =========================
+       DARK MODE
+    ========================= */
+
+    body.dark-mode {
+        --cream: #102522;
+        --cream-dark: #0c1e1c;
+        --sage: #1d3d38;
+        --sage-light: #17332f;
+        --teal: #65a99e;
+        --dark-teal: #dcece8;
+        --text: #e5f0ed;
+        --muted: #a5bbb6;
+        --white: #142c29;
+        --border: #2a4844;
+
+        background:
+            #102522;
+
+        color:
+            #e5f0ed;
+    }
+
+
+    body.dark-mode
+    .home-navbar {
+        background:
+            rgba(16, 37, 34, 0.96);
+    }
+
+
+    body.dark-mode
+    .home-logo,
+    body.dark-mode
+    .home-nav-links a {
+        color:
+            var(--dark-teal);
+    }
+
+
+    body.dark-mode
+    .home-feature-card,
+    body.dark-mode
+    .languages-section {
+        background:
+            #142c29;
+    }
+
+
+    body.dark-mode
+    .home-feature-card h3,
+    body.dark-mode
+    .languages-section h2,
+    body.dark-mode
+    .cloud-section h2,
+    body.dark-mode
+    .cloud-point,
+    body.dark-mode
+    .language-item {
+        color:
+            var(--dark-teal);
+    }
+
+
+    body.dark-mode
+    .home-feature-card p,
+    body.dark-mode
+    .languages-section > p,
+    body.dark-mode
+    .cloud-section p {
+        color:
+            var(--muted);
+    }
+
+
+    body.dark-mode
+    .floating-word {
+        background:
+            #142c29;
+
+        border-color:
+            #2a4844;
+
+        color:
+            #dcece8;
+    }
+
+
+    body.dark-mode
+    .language-item {
+        background:
+            #17332f;
+
+        border-color:
+            #2a4844;
+    }
+
+
+    body.dark-mode
+    .home-footer {
+        background:
+            #0c1e1c;
+
+        border-color:
+            #2a4844;
+    }
+
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 950px) {
+
+        .home-hero,
+        .cloud-section {
+            grid-template-columns: 1fr;
+        }
+
+
+        .home-hero {
+            text-align: center;
+        }
+
+
+        .home-hero p {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+        .hero-buttons {
+            justify-content: center;
+        }
+
+
+        .hero-visual {
+            min-height: 360px;
+        }
+
+
+        .home-features {
+            grid-template-columns:
+                repeat(2, 1fr);
+        }
+
+
+        .language-list {
+            grid-template-columns:
+                repeat(2, 1fr);
+        }
+
+    }
+
+
+    @media (max-width: 650px) {
+
+        .home-nav-container {
+            padding:
+                12px 16px;
+        }
+
+
+        .home-nav-links {
+            gap: 10px;
+        }
+
+
+        .home-nav-links a:not(.home-login):not(.home-get-started) {
+            display: none;
+        }
+
+
+        .home-hero {
+            padding:
+                50px 18px 40px;
+        }
+
+
+        .home-hero h1 {
+            font-size: 42px;
+        }
+
+
+        .home-hero p {
+            font-size: 15px;
+        }
+
+
+        .globe-container {
+            width: 240px;
+            height: 240px;
+        }
+
+
+        .globe {
+            font-size: 105px;
+        }
+
+
+        .translation-icon {
+            width: 50px;
+            height: 50px;
+            font-size: 22px;
+        }
+
+
+        .floating-word {
+            font-size: 11px;
+            padding: 8px 11px;
+        }
+
+
+        .home-features {
+            grid-template-columns: 1fr;
+
+            padding-left: 18px;
+            padding-right: 18px;
+        }
+
+
+        .language-list {
+            grid-template-columns: 1fr;
+
+            max-width: 400px;
+        }
+
+
+        .cloud-section {
+            padding:
+                60px 18px;
+        }
+
+
+        .cloud-section h2 {
+            font-size: 30px;
+        }
+
+
+        .cloud-card {
+            min-height: 250px;
+        }
+
+
+        .home-cta {
+            margin:
+                10px 18px 50px;
+
+            padding:
+                40px 22px;
+        }
+
+
+        .home-cta h2 {
+            font-size: 26px;
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="home-navbar">
+
+    <div class="home-nav-container">
+
+        <a
+            href="index.html"
+            class="home-logo"
+        >
+
+            <span class="home-logo-icon">
+                ☁
+            </span>
+
+            CloudTranslate
+
+        </a>
+
+
+        <div class="home-nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="translate.html">
+                Translate
+            </a>
+
+            <a href="history.html">
+                History
+            </a>
+
+            <a
+                href="login.html"
+                class="home-login"
+            >
+                Login
+            </a>
+
+            <a
+                href="translate.html"
+                class="home-get-started"
+            >
+                Get Started
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="home-hero">
+
+
+    <div class="hero-content">
+
+        <span class="hero-badge">
+            🌿 AI-Powered • Fast • Secure
+        </span>
+
+
+        <h1>
+
+            Break Language
+            <br>
+
+            Barriers with
+            <br>
+
+            <span class="hero-highlight">
+                CloudTranslate
+            </span>
+
+        </h1>
+
+
+        <p>
+            Translate your text instantly between
+            multiple languages using the power of
+            cloud-based technology. Fast, simple
+            and convenient language translation.
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a
+                href="translate.html"
+                class="hero-primary"
+            >
+                Start Translating →
+            </a>
+
+
+            <a
+                href="history.html"
+                class="hero-secondary"
+            >
+                View History
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- HERO VISUAL -->
+
+    <div class="hero-visual">
+
+        <div class="globe-container">
+
+            <span class="globe">
+                🌍
+            </span>
+
+
+            <div class="translation-icon one">
+                A
+            </div>
+
+
+            <div class="translation-icon two">
+                文
+            </div>
+
+        </div>
+
+
+        <div class="floating-word word-one">
+            Hello
+        </div>
+
+
+        <div class="floating-word word-two">
+            Bonjour
+        </div>
+
+
+        <div class="floating-word word-three">
+            Hola
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FEATURES
+========================= -->
+
+<section class="home-features">
+
+
+    <div class="home-feature-card">
+
+        <div class="feature-icon">
+            ⚡
+        </div>
+
+        <h3>
+            Fast & Accurate
+        </h3>
+
+        <p>
+            Get translations quickly
+            whenever you need them.
+        </p>
+
+    </div>
+
+
+    <div class="home-feature-card">
+
+        <div class="feature-icon">
+            🌍
+        </div>
+
+        <h3>
+            Multiple Languages
+        </h3>
+
+        <p>
+            Translate between
+            multiple supported languages.
+        </p>
+
+    </div>
+
+
+    <div class="home-feature-card">
+
+        <div class="feature-icon">
+            ☁️
+        </div>
+
+        <h3>
+            Cloud Powered
+        </h3>
+
+        <p>
+            Designed around modern
+            cloud-based technology.
+        </p>
+
+    </div>
+
+
+    <div class="home-feature-card">
+
+        <div class="feature-icon">
+            🔐
+        </div>
+
+        <h3>
+            Secure & Private
+        </h3>
+
+        <p>
+            Your translation experience
+            is designed with security in mind.
+        </p>
+
+    </div>
+
+
+</section>
+
+
+<!-- =========================
+     SUPPORTED LANGUAGES
+========================= -->
+
+<section class="languages-section">
+
+    <h2>
+        Supported Languages
+    </h2>
+
+    <p>
+        Translate between popular languages
+        around the world.
+    </p>
+
+
+    <div class="language-list">
+
+        <div class="language-item">
+            <span class="language-flag">🇬🇧</span>
+            <span>English</span>
+        </div>
+
+
+        <div class="language-item">
+            <span class="language-flag">🇮🇳</span>
+            <span>Hindi</span>
+        </div>
+
+
+        <div class="language-item">
+            <span class="language-flag">🇫🇷</span>
+            <span>French</span>
+        </div>
+
+
+        <div class="language-item">
+            <span class="language-flag">🇩🇪</span>
+            <span>German</span>
+        </div>
+
+
+        <div class="language-item">
+            <span class="language-flag">🇪🇸</span>
+            <span>Spanish</span>
+        </div>
+
+
+        <div class="language-item">
+            <span class="language-flag">🇮🇳</span>
+            <span>Tamil</span>
+        </div>
+
+
+        <div class="language-item">
+            <span class="language-flag">🇮🇳</span>
+            <span>Telugu</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CLOUD SECTION
+========================= -->
+
+<section class="cloud-section">
+
+
+    <div>
+
+        <span class="hero-badge">
+            ☁️ CLOUD TECHNOLOGY
+        </span>
+
+
+        <h2>
+            Translation made
+            simple with the cloud.
+        </h2>
+
+
+        <p>
+            CloudTranslate provides a simple
+            interface for translating text while
+            demonstrating how a modern cloud-based
+            application can connect users with
+            translation services.
+        </p>
+
+
+        <div class="cloud-points">
+
+
+            <div class="cloud-point">
+
+                <span>
+                    ✓
+                </span>
+
+                Simple translation interface
+
+            </div>
+
+
+            <div class="cloud-point">
+
+                <span>
+                    ✓
+                </span>
+
+                Multiple language support
+
+            </div>
+
+
+            <div class="cloud-point">
+
+                <span>
+                    ✓
+                </span>
+
+                Translation history
+
+            </div>
+
+
+            <div class="cloud-point">
+
+                <span>
+                    ✓
+                </span>
+
+                Cloud-based architecture
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="cloud-card">
+
+        <div class="cloud-big">
+            ☁️
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section class="home-cta">
+
+    <h2>
+        Ready to translate?
+    </h2>
+
+    <p>
+        Start your translation journey
+        with CloudTranslate.
+    </p>
+
+
+    <a
+        href="translate.html"
+        class="cta-button"
+    >
+        Start Translating →
+    </a>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="home-footer">
+
+    © 2026 CloudTranslate.
+    Cloud-Based Language Translation System.
+
+</footer>
+```
+
+</body>
+
+</html>
