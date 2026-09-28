@@ -67,6 +67,8 @@ const languageNames = {
     es: "Spanish",
     ta: "Tamil",
     te: "Telugu"
+     ml: "Malayalam",
+    kn: "Kannada"
 
 };
 

@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - CloudTranslate</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f8f1e7;
+            color: #3d3028;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            background: #fffaf4;
+            border-bottom: 1px solid #eadfd2;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+            color: #6b4f3f;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #66564b;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover,
+        .nav-links .active {
+            color: #9a6b45;
+        }
+
+        /* MAIN */
+
+        .container {
+            width: 86%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .dashboard-header {
+            padding: 55px 0 30px;
+        }
+
+        .dashboard-header h1 {
+            font-size: 38px;
+            color: #4c392e;
+            margin-bottom: 10px;
+        }
+
+        .dashboard-header p {
+            color: #806f62;
+            font-size: 16px;
+        }
+
+        /* STATS */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .stat-card {
+            background: #fffaf4;
+            border: 1px solid #eadfd2;
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(92, 69, 51, 0.06);
+        }
+
+        .stat-icon {
+            font-size: 25px;
+            margin-bottom: 12px;
+        }
+
+        .stat-card h2 {
+            font-size: 30px;
+            color: #5b4335;
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            color: #8a786b;
+            font-size: 14px;
+        }
+
+        /* CONTENT GRID */
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 22px;
+            margin-bottom: 35px;
+        }
+
+        .panel {
+            background: #fffaf4;
+            border: 1px solid #eadfd2;
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 8px 25px rgba(92, 69, 51, 0.06);
+        }
+
+        .panel h2 {
+            font-size: 21px;
+            color: #4f3b30;
+            margin-bottom: 8px;
+        }
+
+        .panel-subtitle {
+            color: #8b796c;
+            font-size: 13px;
+            margin-bottom: 22px;
+        }
+
+        /* QUICK ACTIONS */
+
+        .actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 13px;
+        }
+
+        .action {
+            text-decoration: none;
+            color: #5a4639;
+            background: #f5eadf;
+            border: 1px solid #ead9c8;
+            border-radius: 14px;
+            padding: 17px;
+            transition: 0.2s;
+        }
+
+        .action:hover {
+            transform: translateY(-2px);
+            background: #efe0d0;
+        }
+
+        .action-icon {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .action strong {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .action span {
+            font-size: 12px;
+            color: #8a7768;
+        }
+
+        /* TECHNOLOGY */
+
+        .technology {
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+        }
+
+        .tech-item {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 14px;
+            background: #f7eee5;
+            border-radius: 13px;
+        }
+
+        .tech-icon {
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ead8c5;
+            border-radius: 10px;
+            font-size: 19px;
+        }
+
+        .tech-item strong {
+            display: block;
+            font-size: 13px;
+            color: #594337;
+            margin-bottom: 3px;
+        }
+
+        .tech-item span {
+            font-size: 11px;
+            color: #89776a;
+        }
+
+        /* INFO */
+
+        .info-box {
+            background: #ead9c8;
+            border-radius: 18px;
+            padding: 25px;
+            margin-bottom: 35px;
+        }
+
+        .info-box h2 {
+            color: #513d31;
+            margin-bottom: 8px;
+            font-size: 21px;
+        }
+
+        .info-box p {
+            color: #705e51;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 28px;
+            color: #8a786b;
+            font-size: 13px;
+            border-top: 1px solid #eadfd2;
+            background: #fffaf4;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 850px) {
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .dashboard-header h1 {
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            .logo {
+                font-size: 19px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                width: 90%;
+            }
+
+            .actions {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+            ☁️ CloudTranslate
+        </div>
+
+        <div class="nav-links">
+
+            <a href="index.html">Home</a>
+
+            <a href="translate.html">Translate</a>
+
+            <a href="history.html">History</a>
+
+            <a href="dashboard.html" class="active">Dashboard</a>
+
+            <a href="login.html">Login</a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- MAIN -->
+
+    <main class="container">
+
+        <section class="dashboard-header">
+
+            <h1>Dashboard</h1>
+
+            <p>
+                Manage your translations and explore your CloudTranslate
+                services.
+            </p>
+
+        </section>
+
+
+        <!-- STAT CARDS -->
+
+        <section class="stats">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">🌐</div>
+
+                <h2 id="totalTranslations">0</h2>
+
+                <p>Total Translations</p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">🗣️</div>
+
+                <h2>9</h2>
+
+                <p>Supported Languages</p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">⚡</div>
+
+                <h2 id="recentTranslations">0</h2>
+
+                <p>Recent Translations</p>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTENT -->
+
+        <section class="content-grid">
+
+
+            <!-- QUICK ACTIONS -->
+
+            <div class="panel">
+
+                <h2>Quick Actions</h2>
+
+                <p class="panel-subtitle">
+                    Access your most useful CloudTranslate features.
+                </p>
+
+
+                <div class="actions">
+
+                    <a href="translate.html" class="action">
+
+                        <div class="action-icon">🌍</div>
+
+                        <strong>Start Translation</strong>
+
+                        <span>Translate text instantly</span>
+
+                    </a>
+
+
+                    <a href="history.html" class="action">
+
+                        <div class="action-icon">🕘</div>
+
+                        <strong>Translation History</strong>
+
+                        <span>View your previous translations</span>
+
+                    </a>
+
+
+                    <a href="index.html" class="action">
+
+                        <div class="action-icon">🏠</div>
+
+                        <strong>Home Page</strong>
+
+                        <span>Explore CloudTranslate</span>
+
+                    </a>
+
+
+                    <a href="login.html" class="action">
+
+                        <div class="action-icon">🔐</div>
+
+                        <strong>Account</strong>
+
+                        <span>Open login page</span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- TECHNOLOGIES -->
+
+            <div class="panel">
+
+                <h2>Cloud Technology</h2>
+
+                <p class="panel-subtitle">
+                    Technologies powering the project.
+                </p>
+
+
+                <div class="technology">
+
+                    <div class="tech-item">
+
+                        <div class="tech-icon">☁️</div>
+
+                        <div>
+
+                            <strong>AWS Lambda</strong>
+
+                            <span>Serverless backend</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="tech-item">
+
+                        <div class="tech-icon">🔗</div>
+
+                        <div>
+
+                            <strong>API Gateway</strong>
+
+                            <span>Connects the web app</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="tech-item">
+
+                        <div class="tech-icon">🌐</div>
+
+                        <div>
+
+                            <strong>Translation API</strong>
+
+                            <span>Real-time translation</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="tech-item">
+
+                        <div class="tech-icon">💻</div>
+
+                        <div>
+
+                            <strong>HTML / CSS / JavaScript</strong>
+
+                            <span>Frontend interface</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROJECT INFORMATION -->
+
+        <section class="info-box">
+
+            <h2>☁️ About CloudTranslate</h2>
+
+            <p>
+                CloudTranslate is a cloud-based language translation system
+                designed to provide fast and practical text translation.
+                The application uses a web interface connected to a
+                serverless cloud backend, allowing translation requests to
+                be processed without maintaining a traditional server.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026 CloudTranslate • Cloud-Based Language Translation System
+
+    </footer>
+
+
+    <!-- DASHBOARD SCRIPT -->
+
+    <script>
+
+        function updateDashboard() {
+
+            let history = [];
+
+            try {
+
+                history =
+                    JSON.parse(
+                        localStorage.getItem("translationHistory")
+                    ) || [];
+
+            } catch (error) {
+
+                history = [];
+
+            }
+
+
+            const total =
+                document.getElementById("totalTranslations");
+
+            const recent =
+                document.getElementById("recentTranslations");
+
+
+            if (total) {
+
+                total.textContent = history.length;
+
+            }
+
+
+            if (recent) {
+
+                recent.textContent =
+                    Math.min(history.length, 5);
+
+            }
+
+        }
+
+
+        updateDashboard();
+
+    </script>
+
+</body>
+</html>

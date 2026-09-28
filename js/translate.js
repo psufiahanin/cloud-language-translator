@@ -1,426 +1,423 @@
-// ===============================
-// CLOUDTRANSLATE - TRANSLATION
-// ===============================
-
-const sourceText = document.getElementById("sourceText");
-const translatedText = document.getElementById("translatedText");
-const translateButton = document.getElementById("translateButton");
-const copyButton = document.getElementById("copyButton");
-const characterCount = document.getElementById("characterCount");
-const translateMessage = document.getElementById("translateMessage");
-
-const sourceLanguage = document.getElementById("sourceLanguage");
-const targetLanguage = document.getElementById("targetLanguage");
-const swapButton = document.getElementById("swapButton");
+const ctSourceText = document.getElementById("sourceText");
+const ctTranslatedText = document.getElementById("translatedText");
+const ctTranslateButton = document.getElementById("translateButton");
+const ctCopyButton = document.getElementById("copyButton");
+const ctCharacterCount = document.getElementById("characterCount");
+const ctTranslateMessage = document.getElementById("translateMessage");
 
 
-// ===============================
-// CHARACTER COUNTER
-// ===============================
+// ========================================
+// AWS API
+// ========================================
 
-sourceText.addEventListener("input", function () {
-
-    characterCount.innerText =
-        sourceText.value.length + " / 5000";
-
-});
+const ctApiUrl =
+    "https://gvsjyh3yzc.execute-api.eu-north-1.amazonaws.com/prod/translate";
 
 
-// ===============================
-// SWAP LANGUAGES
-// ===============================
+// ========================================
+// LANGUAGE CODE
+// ========================================
 
-swapButton.addEventListener("click", function () {
+function ctGetLanguageCode(id) {
 
-    // Swap selected languages
-    const oldSourceLanguage = sourceLanguage.value;
+    const select = document.getElementById(id);
 
-    sourceLanguage.value =
-        targetLanguage.value;
+    if (!select) return "";
 
-    targetLanguage.value =
-        oldSourceLanguage;
+    const option =
+        select.options[select.selectedIndex];
 
+    if (!option) return "";
 
-    // Swap text and translation
-    const oldSourceText =
-        sourceText.value;
+    if (option.value) {
 
-    const oldTranslation =
-        translatedText.innerText;
-
-
-    if (
-        oldTranslation !==
-        "Your translation will appear here."
-    ) {
-
-        sourceText.value =
-            oldTranslation;
-
-        translatedText.innerText =
-            oldSourceText;
+        return option.value
+            .trim()
+            .toLowerCase();
 
     }
 
+    const name =
+        option.textContent
+            .trim()
+            .toLowerCase();
 
-    // Update character count
-    characterCount.innerText =
-        sourceText.value.length + " / 5000";
 
+    const languages = {
 
-    // Clear message
-    translateMessage.innerText = "";
+        english: "en",
+        hindi: "hi",
+        french: "fr",
+        german: "de",
+        spanish: "es",
+        tamil: "ta",
+        telugu: "te",
+        malayalam: "ml",
+        kannada: "kn"
 
-});
+    };
 
 
-// ===============================
-// TRANSLATE BUTTON
-// ===============================
+    for (const language in languages) {
 
-translateButton.addEventListener("click", async function () {
+        if (name.includes(language)) {
 
-    const text =
-        sourceText.value.trim();
-
-
-    const fromLanguage =
-        sourceLanguage.value;
-
-
-    const toLanguage =
-        targetLanguage.value;
-
-
-    // ===============================
-    // EMPTY TEXT CHECK
-    // ===============================
-
-    if (text === "") {
-
-        translateMessage.innerText =
-            "Please enter some text to translate.";
-
-        translateMessage.style.color =
-            "#dc2626";
-
-        return;
-    }
-
-
-    // ===============================
-    // SAME LANGUAGE
-    // ===============================
-
-    if (fromLanguage === toLanguage) {
-
-        translatedText.innerText =
-            text;
-
-        translateMessage.innerText =
-            "Source and target languages are the same.";
-
-        translateMessage.style.color =
-            "#2563eb";
-
-        return;
-    }
-
-
-    // ===============================
-    // LOADING
-    // ===============================
-
-    translateButton.disabled = true;
-
-    translateMessage.innerText =
-        "Translating...";
-
-    translateMessage.style.color =
-        "#2563eb";
-
-
-    try {
-
-        // ===============================
-        // FREE TRANSLATION API
-        // ===============================
-
-        const url =
-            "https://api.mymemory.translated.net/get" +
-            "?q=" +
-            encodeURIComponent(text) +
-            "&langpair=" +
-            encodeURIComponent(
-                fromLanguage + "|" + toLanguage
-            );
-
-
-        const response =
-            await fetch(url);
-
-
-        if (!response.ok) {
-
-            throw new Error(
-                "Translation service unavailable."
-            );
-
-        }
-
-
-        const data =
-            await response.json();
-
-
-        // ===============================
-        // CHECK RESULT
-        // ===============================
-
-        if (
-            !data.responseData ||
-            !data.responseData.translatedText
-        ) {
-
-            throw new Error(
-                "Translation failed."
-            );
-
-        }
-
-
-        const result =
-            data.responseData.translatedText;
-
-
-        // ===============================
-        // DISPLAY RESULT
-        // ===============================
-
-        translatedText.innerText =
-            result;
-
-
-        translateMessage.innerText =
-            "Translation completed successfully!";
-
-        translateMessage.style.color =
-            "#16a34a";
-
-
-        // ===============================
-        // SAVE HISTORY
-        // ===============================
-
-        const history =
-            JSON.parse(
-                localStorage.getItem(
-                    "translationHistory"
-                )
-            ) || [];
-
-
-        const translationRecord = {
-
-            date:
-                new Date().toLocaleString(),
-
-            from:
-                fromLanguage,
-
-            to:
-                toLanguage,
-
-            text:
-                text,
-
-            translation:
-                result
-
-        };
-
-
-        history.unshift(
-            translationRecord
-        );
-
-
-        // Keep latest 50 translations
-        localStorage.setItem(
-
-            "translationHistory",
-
-            JSON.stringify(
-                history.slice(0, 50)
-            )
-
-        );
-
-
-    } catch (error) {
-
-        console.error(
-            "Translation error:",
-            error
-        );
-
-
-        translatedText.innerText =
-            "Unable to translate.";
-
-
-        translateMessage.innerText =
-            "Unable to connect to the translation service.";
-
-        translateMessage.style.color =
-            "#dc2626";
-
-
-    } finally {
-
-        translateButton.disabled =
-            false;
-
-    }
-
-});
-
-
-// ===============================
-// COPY TRANSLATION
-// ===============================
-
-copyButton.addEventListener(
-    "click",
-    async function () {
-
-        const text =
-            translatedText.innerText.trim();
-
-
-        if (
-            text === "" ||
-            text ===
-                "Your translation will appear here." ||
-            text ===
-                "Unable to translate."
-        ) {
-
-            return;
-
-        }
-
-
-        try {
-
-            await navigator.clipboard.writeText(
-                text
-            );
-
-
-            translateMessage.innerText =
-                "Translation copied successfully!";
-
-            translateMessage.style.color =
-                "#16a34a";
-
-
-        } catch (error) {
-
-            translateMessage.innerText =
-                "Unable to copy the translation.";
-
-            translateMessage.style.color =
-                "#dc2626";
+            return languages[language];
 
         }
 
     }
-);
-// =========================
-// LANGUAGE POPUP
-// =========================
-
-const languageBadge =
-    document.getElementById("languageBadge");
-
-const languagePopup =
-    document.getElementById("languagePopup");
-
-const closeLanguagePopup =
-    document.getElementById("closeLanguagePopup");
 
 
-languageBadge.addEventListener(
-    "click",
-    function () {
-
-        languagePopup.classList.toggle("show");
-
-    }
-);
-
-
-closeLanguagePopup.addEventListener(
-    "click",
-    function (event) {
-
-        event.stopPropagation();
-
-        languagePopup.classList.remove("show");
-
-    }
-);
-// =========================
-// DARK MODE
-// =========================
-
-const themeToggle =
-    document.getElementById("themeToggle");
-
-
-const savedTheme =
-    localStorage.getItem("cloudTranslateTheme");
-
-
-if (savedTheme === "dark") {
-
-    document.body.classList.add("dark-mode");
-
-    themeToggle.innerText = "☀️";
+    return "";
 
 }
 
 
-themeToggle.addEventListener(
-    "click",
-    function () {
+// ========================================
+// CHARACTER COUNT
+// ========================================
 
-        document.body.classList.toggle("dark-mode");
+if (ctSourceText && ctCharacterCount) {
 
+    ctSourceText.addEventListener(
+        "input",
+        function () {
 
-        if (
-            document.body.classList.contains("dark-mode")
-        ) {
-
-            themeToggle.innerText = "☀️";
-
-            localStorage.setItem(
-                "cloudTranslateTheme",
-                "dark"
-            );
-
-        } else {
-
-            themeToggle.innerText = "🌙";
-
-            localStorage.setItem(
-                "cloudTranslateTheme",
-                "light"
-            );
+            ctCharacterCount.textContent =
+                this.value.length + " / 5000";
 
         }
+    );
 
-    }
-);
+}
+
+
+// ========================================
+// TRANSLATE
+// ========================================
+
+if (ctTranslateButton) {
+
+    ctTranslateButton.addEventListener(
+        "click",
+        async function () {
+
+            const text =
+                ctSourceText.value.trim();
+
+
+            const sourceLanguage =
+                ctGetLanguageCode(
+                    "sourceLanguage"
+                );
+
+
+            const targetLanguage =
+                ctGetLanguageCode(
+                    "targetLanguage"
+                );
+
+
+            if (!text) {
+
+                ctTranslateMessage.textContent =
+                    "Please enter some text to translate.";
+
+                return;
+
+            }
+
+
+            if (
+                !sourceLanguage ||
+                !targetLanguage
+            ) {
+
+                ctTranslateMessage.textContent =
+                    "Please select both languages.";
+
+                return;
+
+            }
+
+
+            if (text.length > 5000) {
+
+                ctTranslateMessage.textContent =
+                    "Please keep the text under 5000 characters.";
+
+                return;
+
+            }
+
+
+            ctTranslateButton.disabled = true;
+
+            ctTranslateMessage.textContent =
+                "Translating...";
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        ctApiUrl,
+                        {
+
+                            method: "POST",
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/json"
+
+                            },
+
+                            body: JSON.stringify({
+
+                                text: text,
+
+                                source:
+                                    sourceLanguage,
+
+                                target:
+                                    targetLanguage
+
+                            })
+
+                        }
+                    );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "AWS request failed: " +
+                        response.status
+                    );
+
+                }
+
+
+                const data =
+                    await response.json();
+
+
+                console.log(
+                    "AWS Translation Response:",
+                    data
+                );
+
+
+                if (!data.translation) {
+
+                    throw new Error(
+                        "No translation received from AWS."
+                    );
+
+                }
+
+
+              ctTranslatedText.value = data.translation;
+ctTranslatedText.textContent = data.translation;
+
+
+                // Remove placeholder class
+                ctTranslatedText.classList.remove(
+                    "translated-placeholder"
+                );
+
+
+                ctTranslateMessage.textContent =
+                    "Translation completed successfully.";
+
+
+                // ========================================
+                // SAVE HISTORY
+                // ========================================
+
+                const history =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "translationHistory"
+                        ) || "[]"
+                    );
+
+
+                history.unshift({
+
+                    sourceText:
+                        text,
+
+                    translatedText:
+                        data.translation,
+
+                    sourceLanguage:
+                        sourceLanguage,
+
+                    targetLanguage:
+                        targetLanguage,
+
+                    date:
+                        new Date().toLocaleString()
+
+                });
+
+
+                localStorage.setItem(
+
+                    "translationHistory",
+
+                    JSON.stringify(
+                        history.slice(0, 50)
+                    )
+
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Translation Error:",
+                    error
+                );
+
+
+                ctTranslateMessage.textContent =
+                    "Translation failed. Please try again.";
+
+            }
+
+
+            ctTranslateButton.disabled =
+                false;
+
+        }
+    );
+
+}
+
+
+// ========================================
+// COPY
+// ========================================
+
+if (ctCopyButton) {
+
+    ctCopyButton.addEventListener(
+        "click",
+        async function () {
+
+            const text =
+    (ctTranslatedText.value || ctTranslatedText.textContent).trim();
+
+
+            if (!text) {
+
+                ctTranslateMessage.textContent =
+                    "Nothing to copy.";
+
+                return;
+
+            }
+
+
+            try {
+
+                await navigator.clipboard.writeText(
+                    text
+                );
+
+
+                ctTranslateMessage.textContent =
+                    "Translation copied!";
+
+
+            } catch (error) {
+
+                ctTranslatedText.select();
+
+                document.execCommand(
+                    "copy"
+                );
+
+
+                ctTranslateMessage.textContent =
+                    "Translation copied!";
+
+            }
+
+        }
+    );
+
+}
+// ========================================
+// SWAP LANGUAGES
+// ========================================
+
+const ctSwapButton =
+    document.getElementById("swapButton");
+
+if (ctSwapButton) {
+
+    ctSwapButton.addEventListener(
+        "click",
+        function () {
+
+            const sourceLanguage =
+                document.getElementById("sourceLanguage");
+
+            const targetLanguage =
+                document.getElementById("targetLanguage");
+
+
+            if (!sourceLanguage || !targetLanguage) {
+                return;
+            }
+
+
+            // Swap selected languages
+            const oldSource =
+                sourceLanguage.value;
+
+            sourceLanguage.value =
+                targetLanguage.value;
+
+            targetLanguage.value =
+                oldSource;
+
+
+            // Also swap the text
+            const oldText =
+                ctSourceText.value;
+
+            ctSourceText.value =
+                ctTranslatedText.value;
+
+            ctTranslatedText.value =
+                oldText;
+
+
+            // Update character count
+            if (ctCharacterCount) {
+
+                ctCharacterCount.textContent =
+                    ctSourceText.value.length +
+                    " / 5000";
+
+            }
+
+
+            // Clear message
+            if (ctTranslateMessage) {
+
+                ctTranslateMessage.textContent =
+                    "Languages swapped.";
+
+            }
+
+        }
+    );
+
+}

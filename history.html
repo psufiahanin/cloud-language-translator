@@ -2,1622 +2,664 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>Translation History - CloudTranslate</title>
-
-    <link
-        rel="stylesheet"
-        href="css/style.css"
-    >
+    <title>History - CloudTranslate</title>
 
     <style>
-
-        /* =========================================
-           CLOUDTRANSLATE HISTORY
-           SAGE GREEN + CREAM THEME
-        ========================================= */
-
-        :root {
-
-            --cream: #faf7ef;
-            --cream-dark: #f1eadb;
-
-            --sage: #dce8df;
-            --sage-light: #edf4ee;
-
-            --teal: #2f6f68;
-            --dark-teal: #174f4a;
-
-            --text: #18322f;
-            --muted: #647874;
-
-            --white: #ffffff;
-
-            --border: #dce5df;
-
-            --shadow:
-                0 12px 35px
-                rgba(23, 79, 74, 0.10);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-
-
-        /* =========================================
-           PAGE
-        ========================================= */
 
         body {
-
-            margin: 0;
-
-            background: var(--cream);
-
-            color: var(--text);
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
-            transition:
-                background 0.3s ease,
-                color 0.3s ease;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f7efe4;
+            color: #3f3025;
+            min-height: 100vh;
         }
 
+        /* ================= NAVBAR ================= */
 
-        /* =========================================
-           NAVBAR
-        ========================================= */
-
-        .navbar {
-
-            width: 100%;
-
-            box-sizing: border-box;
-
-            padding: 18px 7%;
-
-            background:
-                rgba(250, 247, 239, 0.96);
-
-            border-bottom:
-                1px solid var(--border);
-
-            position: sticky;
-
-            top: 0;
-
-            z-index: 1000;
-
-            backdrop-filter:
-                blur(12px);
-        }
-
-
-        .nav-container {
+        nav {
+            min-height: 76px;
+            padding: 0 7%;
+            background: #fffaf4;
+            border-bottom: 1px solid #eadbc9;
 
             display: flex;
-
             align-items: center;
-
             justify-content: space-between;
 
-            max-width: 1180px;
-
-            margin: auto;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-
 
         .logo {
-
-            color:
-                var(--dark-teal);
-
-            text-decoration: none;
-
-            font-size: 21px;
-
-            font-weight: 800;
+            font-size: 24px;
+            font-weight: 700;
+            color: #5a4030;
         }
 
+        .logo span {
+            color: #a66a3f;
+        }
 
         .nav-links {
-
             display: flex;
-
             align-items: center;
-
-            gap: 26px;
+            gap: 28px;
         }
-
 
         .nav-links a {
-
-            color:
-                var(--muted);
-
             text-decoration: none;
-
+            color: #624b3b;
             font-size: 14px;
-
             font-weight: 600;
-
-            transition: 0.2s ease;
+            transition: 0.25s;
         }
 
-
-        .nav-links a:hover,
-        .nav-links a.active {
-
-            color:
-                var(--teal);
+        .nav-links a:hover {
+            color: #a66a3f;
         }
 
+        .nav-links .active {
+            color: #a66a3f;
+        }
 
-        .nav-links a.active {
+        .login-btn {
+            padding: 10px 20px;
+            border-radius: 25px;
+            background: #8b5e3c;
+            color: white !important;
+        }
 
+        .login-btn:hover {
+            background: #70482e !important;
+        }
+
+        /* ================= HEADER ================= */
+
+        .page-header {
+            text-align: center;
+            padding: 55px 20px 30px;
+        }
+
+        .page-icon {
+            width: 62px;
+            height: 62px;
+            margin: 0 auto 15px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #ead8c3;
+            border-radius: 19px;
+
+            font-size: 30px;
+        }
+
+        .page-header h1 {
+            font-size: 40px;
+            color: #493427;
+            margin-bottom: 7px;
+        }
+
+        .page-header h1 span {
+            color: #a66a3f;
+        }
+
+        .page-header p {
+            color: #806a59;
+            font-size: 15px;
+        }
+
+        /* ================= MAIN ================= */
+
+        .history-container {
+            width: 90%;
+            max-width: 950px;
+            margin: 0 auto 70px;
+        }
+
+        /* ================= STATS ================= */
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: #fffaf4;
+            border: 1px solid #eadbc9;
+            border-radius: 17px;
+            padding: 18px;
+            text-align: center;
+            box-shadow: 0 7px 20px rgba(80, 55, 39, 0.04);
+        }
+
+        .stat-icon {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .stat-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: #5a4030;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #8a7160;
+        }
+
+        /* ================= SEARCH ================= */
+
+        .history-tools {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            flex: 1;
             position: relative;
         }
 
-
-        .nav-links a.active::after {
-
-            content: "";
-
-            position: absolute;
-
-            left: 0;
-
-            right: 0;
-
-            bottom: -8px;
-
-            height: 2px;
-
-            background:
-                var(--teal);
-
-            border-radius: 5px;
-        }
-
-
-        .theme-toggle {
-
-            width: 38px;
-
-            height: 38px;
-
-            border: 1px solid
-                var(--border);
-
-            border-radius: 50%;
-
-            background:
-                var(--white);
-
-            cursor: pointer;
-
-            font-size: 17px;
-
-            transition: 0.2s ease;
-        }
-
-
-        .theme-toggle:hover {
-
-            transform:
-                translateY(-2px);
-
-            border-color:
-                var(--teal);
-        }
-
-
-        /* =========================================
-           MAIN
-        ========================================= */
-
-        .history-page {
-
-            width: 86%;
-
-            max-width: 1180px;
-
-            margin: auto;
-
-            padding:
-                60px 0 80px;
-        }
-
-
-        /* =========================================
-           HERO
-        ========================================= */
-
-        .history-hero {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            gap: 30px;
-
-            padding:
-                45px 50px;
-
-            margin-bottom: 30px;
-
-            background:
-                var(--sage-light);
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 26px;
-        }
-
-
-        .history-hero-content {
-
-            max-width: 700px;
-        }
-
-
-        .history-hero-badge {
-
-            display: inline-block;
-
-            margin-bottom: 14px;
-
-            padding:
-                8px 13px;
-
-            background:
-                var(--white);
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 30px;
-
-            color:
-                var(--teal);
-
-            font-size: 11px;
-
-            font-weight: 800;
-
-            letter-spacing: 1px;
-        }
-
-
-        .history-hero h1 {
-
-            margin: 0;
-
-            color:
-                var(--dark-teal);
-
-            font-size:
-                clamp(35px, 5vw, 55px);
-
-            line-height: 1.1;
-
-            letter-spacing:
-                -1.5px;
-        }
-
-
-        .history-hero p {
-
-            max-width: 580px;
-
-            margin:
-                17px 0 0;
-
-            color:
-                var(--muted);
-
-            font-size: 16px;
-
-            line-height: 1.7;
-        }
-
-
-        .history-hero-icon {
-
-            width: 105px;
-
-            height: 105px;
-
-            flex-shrink: 0;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            background:
-                var(--teal);
-
-            border-radius: 30px;
-
-            color: white;
-
-            font-size: 45px;
-
-            box-shadow:
-                0 12px 25px
-                rgba(47,111,104,0.20);
-        }
-
-
-        /* =========================================
-           FEATURE CARDS
-        ========================================= */
-
-        .history-features {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-
-            gap: 18px;
-
-            margin-bottom: 28px;
-        }
-
-
-        .history-feature-card {
-
-            display: flex;
-
-            align-items: flex-start;
-
-            gap: 14px;
-
-            padding: 21px;
-
-            background:
-                var(--white);
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 18px;
-
-            transition: 0.25s ease;
-        }
-
-
-        .history-feature-card:hover {
-
-            transform:
-                translateY(-4px);
-
-            box-shadow:
-                var(--shadow);
-        }
-
-
-        .history-feature-icon {
-
-            width: 45px;
-
+        .search-box input {
+            width: 100%;
             height: 45px;
+            padding: 0 18px 0 43px;
 
-            flex-shrink: 0;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            background:
-                var(--sage);
-
-            border-radius: 13px;
-
-            font-size: 20px;
-        }
-
-
-        .history-feature-card h3 {
-
-            margin:
-                0 0 6px;
-
-            color:
-                var(--dark-teal);
-
-            font-size: 14px;
-
-            font-weight: 800;
-        }
-
-
-        .history-feature-card p {
-
-            margin: 0;
-
-            color:
-                var(--muted);
-
-            font-size: 12px;
-
-            line-height: 1.6;
-        }
-
-
-        /* =========================================
-           STATISTICS
-        ========================================= */
-
-        .history-stats {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 18px;
-
-            margin-bottom: 28px;
-        }
-
-
-        .history-stat-card {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 16px;
-
-            padding: 23px;
-
-            background:
-                var(--white);
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 18px;
-
-            transition: 0.25s ease;
-        }
-
-
-        .history-stat-card:hover {
-
-            transform:
-                translateY(-3px);
-
-            box-shadow:
-                var(--shadow);
-        }
-
-
-        .history-stat-icon {
-
-            width: 50px;
-
-            height: 50px;
-
-            flex-shrink: 0;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            background:
-                var(--sage);
-
+            border: 1px solid #ddc8b0;
             border-radius: 14px;
 
-            font-size: 21px;
-        }
-
-
-        .history-stat-card span {
-
-            display: block;
-
-            margin-bottom: 5px;
-
-            color:
-                var(--muted);
-
-            font-size: 12px;
-        }
-
-
-        .history-stat-card strong {
-
-            display: block;
-
-            color:
-                var(--dark-teal);
-
-            font-size: 21px;
-
-            word-break: break-word;
-        }
-
-
-        /* =========================================
-           HISTORY CARD
-        ========================================= */
-
-        .history-card {
-
-            background:
-                var(--white);
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 24px;
-
-            box-shadow:
-                var(--shadow);
-
-            overflow: hidden;
-
-            margin-bottom: 28px;
-        }
-
-
-        .history-card-header {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            gap: 20px;
-
-            padding:
-                28px 30px;
-
-            border-bottom:
-                1px solid var(--border);
-        }
-
-
-        .history-section-label {
-
-            color:
-                var(--teal);
-
-            font-size: 11px;
-
-            font-weight: 800;
-
-            letter-spacing: 1.4px;
-        }
-
-
-        .history-card-header h2 {
-
-            margin:
-                6px 0;
-
-            color:
-                var(--dark-teal);
-
-            font-size: 25px;
-        }
-
-
-        .history-card-header p {
-
-            margin: 0;
-
-            color:
-                var(--muted);
+            background: #fffaf4;
+            color: #543e2f;
 
             font-size: 13px;
+            outline: none;
         }
 
+        .search-box input:focus {
+            border-color: #a66a3f;
+        }
 
-        /* =========================================
-           CLEAR BUTTON
-        ========================================= */
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 11px;
+            font-size: 17px;
+        }
 
-        .clear-history-button {
+        #clearHistoryButton {
+            height: 45px;
+            padding: 0 20px;
 
-            padding:
-                11px 16px;
+            border: 1px solid #d8bda2;
+            border-radius: 14px;
 
-            border:
-                1px solid #e4caca;
+            background: #f0dfcd;
+            color: #674a36;
 
-            border-radius: 10px;
-
-            background:
-                #fff7f7;
-
-            color:
-                #a13b3b;
-
-            font-size: 12px;
-
+            font-size: 13px;
             font-weight: 700;
 
             cursor: pointer;
-
-            transition: 0.2s ease;
-
-            white-space: nowrap;
+            transition: 0.25s;
         }
 
-
-        .clear-history-button:hover {
-
-            background:
-                #fceaea;
-
-            transform:
-                translateY(-1px);
+        #clearHistoryButton:hover {
+            background: #e6ccb1;
         }
 
+        /* ================= HISTORY BOXES ================= */
 
-        /* =========================================
-           TABLE
-        ========================================= */
-
-        .history-table-wrapper {
-
-            width: 100%;
-
-            overflow-x: auto;
-        }
-
-
-        .history-card table {
-
-            width: 100%;
-
-            border-collapse: collapse;
-
-            min-width: 760px;
-        }
-
-
-        .history-card th {
-
-            padding:
-                15px 18px;
-
-            text-align: left;
-
-            background:
-                var(--sage-light);
-
-            color:
-                var(--dark-teal);
-
-            font-size: 11px;
-
-            font-weight: 800;
-
-            letter-spacing: 0.5px;
-
-            border-bottom:
-                1px solid var(--border);
-        }
-
-
-        .history-card td {
-
-            padding:
-                17px 18px;
-
-            border-bottom:
-                1px solid var(--border);
-
-            color:
-                var(--text);
-
-            font-size: 12px;
-
-            vertical-align: middle;
-        }
-
-
-        .history-card tbody tr {
-
-            transition:
-                background 0.2s ease;
-        }
-
-
-        .history-card tbody tr:hover {
-
-            background:
-                var(--sage-light);
-        }
-
-
-        .history-preview-text {
-
-            max-width: 220px;
-
-            color:
-                var(--muted) !important;
-
-            white-space: nowrap;
-
-            overflow: hidden;
-
-            text-overflow: ellipsis;
-        }
-
-
-        /* =========================================
-           VIEW BUTTON
-        ========================================= */
-
-        .history-view-button {
-
-            padding:
-                8px 14px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 9px;
-
-            background:
-                var(--sage-light);
-
-            color:
-                var(--teal);
-
-            font-size: 12px;
-
-            font-weight: 800;
-
-            cursor: pointer;
-
-            transition: 0.2s ease;
-        }
-
-
-        .history-view-button:hover {
-
-            background:
-                var(--teal);
-
-            color: white;
-
-            border-color:
-                var(--teal);
-        }
-
-
-        /* =========================================
-           EMPTY HISTORY
-        ========================================= */
-
-        .empty-history {
-
-            padding:
-                60px 20px;
-
-            text-align: center;
-        }
-
-
-        .empty-icon {
-
-            font-size: 42px;
-
-            margin-bottom: 12px;
-        }
-
-
-        .empty-history h3 {
-
-            margin:
-                0 0 8px;
-
-            color:
-                var(--dark-teal);
-
-            font-size: 19px;
-        }
-
-
-        .empty-history p {
-
-            margin:
-                0 0 20px;
-
-            color:
-                var(--muted);
-
-            font-size: 13px;
-        }
-
-
-        .history-translate-button {
-
-            display: inline-block;
-
-            padding:
-                11px 17px;
-
-            background:
-                var(--teal);
-
-            color: white;
-
-            text-decoration: none;
-
-            border-radius: 10px;
-
-            font-size: 12px;
-
-            font-weight: 800;
-        }
-
-
-        .history-translate-button:hover {
-
-            background:
-                var(--dark-teal);
-        }
-
-
-        /* =========================================
-           INFO CARDS
-        ========================================= */
-
-        .history-info-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 18px;
-
-            margin-bottom: 28px;
-        }
-
-
-        .history-info-card {
-
-            padding: 24px;
-
-            background:
-                var(--white);
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 18px;
-
-            transition: 0.25s ease;
-        }
-
-
-        .history-info-card:hover {
-
-            transform:
-                translateY(-3px);
-
-            box-shadow:
-                var(--shadow);
-        }
-
-
-        .history-info-icon {
-
-            width: 45px;
-
-            height: 45px;
-
+        #historyList {
             display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            margin-bottom: 15px;
-
-            background:
-                var(--sage);
-
-            border-radius: 13px;
-
-            font-size: 20px;
-        }
-
-
-        .history-info-card h3 {
-
-            margin:
-                0 0 8px;
-
-            color:
-                var(--dark-teal);
-
-            font-size: 15px;
-        }
-
-
-        .history-info-card p {
-
-            margin: 0;
-
-            color:
-                var(--muted);
-
-            font-size: 12px;
-
-            line-height: 1.7;
-        }
-
-
-        /* =========================================
-           ACTION SECTION
-        ========================================= */
-
-        .history-action {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            gap: 25px;
-
-            padding:
-                30px 35px;
-
-            background:
-                var(--dark-teal);
-
-            color: white;
-
-            border-radius: 22px;
-        }
-
-
-        .history-action h2 {
-
-            margin:
-                0 0 7px;
-
-            font-size: 24px;
-        }
-
-
-        .history-action p {
-
-            margin: 0;
-
-            color:
-                #c9dfda;
-
-            font-size: 13px;
-        }
-
-
-        .history-main-button {
-
-            display: inline-block;
-
-            padding:
-                13px 19px;
-
-            background:
-                white;
-
-            color:
-                var(--dark-teal);
-
-            text-decoration: none;
-
-            border-radius: 11px;
-
-            font-size: 12px;
-
-            font-weight: 800;
-
-            white-space: nowrap;
-
-            transition: 0.2s ease;
-        }
-
-
-        .history-main-button:hover {
-
-            transform:
-                translateY(-2px);
-
-            background:
-                var(--sage-light);
-        }
-
-
-        /* =========================================
-           FOOTER
-        ========================================= */
-
-        .footer {
-
-            padding:
-                30px 7%;
-
-            background:
-                var(--dark-teal);
-
-            text-align: center;
-
-            color:
-                #c9dfda;
-
-            font-size: 12px;
-        }
-
-
-        .footer p {
-
-            margin: 0;
-        }
-
-
-        /* =========================================
-           TRANSLATION MODAL
-        ========================================= */
-
-        .translation-modal {
-
-            display: none;
-
-            position: fixed;
-
-            inset: 0;
-
-            z-index: 9999;
-
-            align-items: center;
-
-            justify-content: center;
-
-            padding: 20px;
-
-            background:
-                rgba(23, 79, 74, 0.55);
-
-            backdrop-filter:
-                blur(6px);
-        }
-
-
-        .translation-modal.show {
-
-            display: flex;
-        }
-
-
-        .translation-modal-box {
-
-            position: relative;
-
-            width: 100%;
-
-            max-width: 620px;
-
-            max-height: 90vh;
-
-            overflow-y: auto;
-
-            padding: 32px;
-
-            background:
-                var(--white);
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 22px;
-
-            box-shadow:
-                0 25px 60px
-                rgba(23,79,74,0.22);
-
-            animation:
-                translationModalIn
-                0.25s ease;
-        }
-
-
-        @keyframes translationModalIn {
-
-            from {
-
-                opacity: 0;
-
-                transform:
-                    translateY(15px)
-                    scale(0.97);
-            }
-
-            to {
-
-                opacity: 1;
-
-                transform:
-                    translateY(0)
-                    scale(1);
-            }
-        }
-
-
-        /* =========================================
-           CLOSE MODAL
-        ========================================= */
-
-        .close-translation-modal {
-
-            position: absolute;
-
-            top: 18px;
-
-            right: 18px;
-
-            width: 36px;
-
-            height: 36px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 10px;
-
-            background:
-                var(--sage-light);
-
-            color:
-                var(--dark-teal);
-
-            font-size: 15px;
-
-            cursor: pointer;
-
-            transition: 0.2s ease;
-        }
-
-
-        .close-translation-modal:hover {
-
-            background:
-                var(--sage);
-
-            transform:
-                scale(1.05);
-        }
-
-
-        /* =========================================
-           MODAL ICON
-        ========================================= */
-
-        .translation-modal-icon {
-
-            width: 52px;
-
-            height: 52px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            margin-bottom: 14px;
-
-            border-radius: 14px;
-
-            background:
-                var(--sage);
-
-            font-size: 24px;
-        }
-
-
-        /* =========================================
-           MODAL TITLE
-        ========================================= */
-
-        .translation-modal-box h2 {
-
-            margin: 0;
-
-            color:
-                var(--dark-teal);
-
-            font-size: 24px;
-        }
-
-
-        .translation-modal-date {
-
-            margin:
-                6px 0 20px;
-
-            color:
-                var(--muted);
-
-            font-size: 13px;
-        }
-
-
-        /* =========================================
-           LANGUAGE FLOW
-        ========================================= */
-
-        .modal-language-flow {
-
-            display: flex;
-
-            align-items: center;
-
+            flex-direction: column;
             gap: 12px;
-
-            margin-bottom: 24px;
-
-            padding:
-                14px 16px;
-
-            background:
-                var(--sage-light);
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 12px;
         }
 
+        .history-item {
+            background: #fffaf4;
+            border: 1px solid #eadbc9;
+            border-radius: 16px;
 
-        .modal-language-flow span {
+            padding: 15px 18px;
 
-            color:
-                var(--teal);
+            box-shadow: 0 5px 16px rgba(80, 55, 39, 0.045);
 
-            font-size: 14px;
-
-            font-weight: 800;
+            transition: 0.25s;
         }
 
-
-        .modal-language-flow
-        .modal-arrow {
-
-            color:
-                var(--muted);
-
-            font-size: 18px;
+        .history-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 9px 22px rgba(80, 55, 39, 0.08);
         }
 
+        .history-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
 
-        /* =========================================
-           MODAL TEXT
-        ========================================= */
-
-        .modal-text-section {
-
-            margin-top: 18px;
+            margin-bottom: 9px;
         }
 
-
-        .modal-text-section h3 {
-
-            margin:
-                0 0 8px;
-
-            color:
-                var(--dark-teal);
-
-            font-size: 14px;
+        .language-pair {
+            font-size: 12px;
+            font-weight: 700;
+            color: #7b573e;
+            background: #f3e4d3;
+            border-radius: 15px;
+            padding: 5px 10px;
         }
 
+        .history-date {
+            font-size: 11px;
+            color: #9a826f;
+        }
 
-        .modal-text-box {
+        .translation-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
 
-            min-height: 70px;
+        .text-side {
+            min-width: 0;
+        }
 
-            padding: 16px;
+        .text-label {
+            font-size: 10px;
+            color: #a08773;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 3px;
+        }
 
-            background:
-                var(--cream);
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 12px;
-
-            color:
-                var(--text);
-
-            font-size: 14px;
-
-            line-height: 1.7;
-
-            white-space: pre-wrap;
+        .original-text,
+        .translated-text {
+            font-size: 13px;
+            line-height: 1.45;
 
             word-break: break-word;
         }
 
-
-        .translated-modal-text {
-
-            background:
-                var(--sage-light);
-
-            border-color:
-                #bfd5ca;
-
-            color:
-                var(--dark-teal);
+        .original-text {
+            color: #644b38;
         }
 
-
-        /* =========================================
-           DARK MODE
-        ========================================= */
-
-        body.dark-mode {
-
-            --cream: #102c29;
-            --cream-dark: #153c38;
-
-            --sage: #24534e;
-            --sage-light: #183d39;
-
-            --teal: #69aaa0;
-            --dark-teal: #d8ebe6;
-
-            --text: #e3efec;
-            --muted: #a8bfba;
-
-            --white: #173834;
-
-            --border: #315a55;
+        .translated-text {
+            color: #493427;
+            font-weight: 600;
         }
 
+        /* ================= EMPTY STATE ================= */
 
-        body.dark-mode .navbar {
+        .empty-history {
+            background: #fffaf4;
+            border: 1px dashed #d9c0a7;
+            border-radius: 18px;
 
-            background:
-                rgba(16,44,41,0.96);
+            padding: 45px 20px;
+            text-align: center;
         }
 
-
-        body.dark-mode
-        .clear-history-button {
-
-            background:
-                #382626;
-
-            border-color:
-                #684040;
-
-            color:
-                #efaaaa;
+        .empty-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
         }
 
-
-        body.dark-mode
-        .clear-history-button:hover {
-
-            background:
-                #4a2d2d;
+        .empty-history h3 {
+            color: #59402f;
+            margin-bottom: 5px;
         }
 
-
-        body.dark-mode
-        .history-action {
-
-            background:
-                #0b2421;
+        .empty-history p {
+            color: #8b7462;
+            font-size: 13px;
+            margin-bottom: 18px;
         }
 
+        .translate-link {
+            display: inline-block;
+            padding: 10px 20px;
 
-        body.dark-mode
-        .history-main-button {
+            border-radius: 22px;
+            background: #8b5e3c;
+            color: white;
 
-            color:
-                #102c29;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
         }
 
-
-        body.dark-mode
-        .translation-modal {
-
-            background:
-                rgba(4,25,22,0.72);
+        .translate-link:hover {
+            background: #70482e;
         }
 
+        /* ================= FOOTER ================= */
 
-        /* =========================================
-           RESPONSIVE
-        ========================================= */
-
-        @media (max-width: 1000px) {
-
-            .history-features {
-
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-
-            .history-stats {
-
-                grid-template-columns:
-                    1fr;
-            }
-
-            .history-info-grid {
-
-                grid-template-columns:
-                    1fr;
-            }
+        footer {
+            background: #38291f;
+            color: #d9c7b5;
+            padding: 32px 7%;
         }
 
+        .footer-content {
+            max-width: 1100px;
+            margin: auto;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff3e5;
+        }
+
+        .footer-logo span {
+            color: #d3a982;
+        }
+
+        footer p {
+            font-size: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 18px;
+        }
+
+        .footer-links a {
+            color: #d9c7b5;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* ================= RESPONSIVE ================= */
 
         @media (max-width: 750px) {
 
+            nav {
+                padding: 18px 5%;
+            }
+
             .nav-links {
-
-                gap: 12px;
+                gap: 13px;
+                flex-wrap: wrap;
+                justify-content: center;
             }
 
-            .nav-links a {
-
-                font-size: 12px;
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
             }
 
-            .history-page {
-
-                width: 92%;
-
-                padding-top: 40px;
-            }
-
-            .history-hero {
-
-                padding:
-                    32px 25px;
-
-                flex-direction:
-                    column;
-
-                align-items:
-                    flex-start;
-            }
-
-            .history-hero-icon {
-
-                width: 75px;
-
-                height: 75px;
-
-                border-radius: 22px;
-
-                font-size: 30px;
-            }
-
-            .history-card-header {
-
-                flex-direction:
-                    column;
-
-                align-items:
-                    flex-start;
-            }
-
-            .history-action {
-
-                flex-direction:
-                    column;
-
-                align-items:
-                    flex-start;
-            }
-        }
-
-
-        @media (max-width: 600px) {
-
-            .history-features {
-
-                grid-template-columns:
-                    1fr;
-            }
-
-            .nav-container {
-
-                align-items:
-                    flex-start;
-
+            .translation-content {
+                grid-template-columns: 1fr;
                 gap: 10px;
             }
 
-            .nav-links {
-
-                flex-wrap:
-                    wrap;
-
-                justify-content:
-                    flex-end;
-            }
-
-            .translation-modal {
-
-                padding: 12px;
-            }
-
-            .translation-modal-box {
-
-                padding:
-                    24px 18px;
-
-                border-radius:
-                    17px;
-            }
-
-            .translation-modal-box h2 {
-
-                font-size: 20px;
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
             }
         }
 
+        @media (max-width: 550px) {
+
+            nav {
+                flex-direction: column;
+                gap: 14px;
+            }
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .history-tools {
+                flex-direction: column;
+            }
+
+            #clearHistoryButton {
+                width: 100%;
+            }
+
+            .history-item {
+                padding: 13px;
+            }
+        }
     </style>
-
 </head>
-
 
 <body>
 
+    <!-- ================= NAVBAR ================= -->
 
-    <!-- =========================
-         NAVBAR
-    ========================= -->
+    <nav>
 
-    <nav class="navbar">
+        <div class="logo">
+            ☁️ Cloud<span>Translate</span>
+        </div>
 
-        <div class="nav-container">
+        <div class="nav-links">
 
-            <a
-                href="index.html"
-                class="logo"
-            >
-                ☁️ CloudTranslate
+            <a href="index.html">
+                Home
             </a>
 
+            <a href="translate.html">
+                Translate
+            </a>
 
-            <div class="nav-links">
+            <a href="history.html" class="active">
+                History
+            </a>
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="login.html" class="login-btn">
+                Login
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ================= HEADER ================= -->
+
+    <section class="page-header">
+
+        <div class="page-icon">
+            🕘
+        </div>
+
+        <h1>
+            Translation <span>History</span>
+        </h1>
+
+        <p>
+            View your recent translations in one place.
+        </p>
+
+    </section>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="history-container">
+
+
+        <!-- STATS -->
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🔢
+                </div>
+
+                <div
+                    class="stat-number"
+                    id="totalTranslations">
+                    0
+                </div>
+
+                <div class="stat-label">
+                    Translations
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🌍
+                </div>
+
+                <div
+                    class="stat-number"
+                    id="languageCount">
+                    9
+                </div>
+
+                <div class="stat-label">
+                    Languages
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🕘
+                </div>
+
+                <div
+                    class="stat-number"
+                    id="recentCount">
+                    0
+                </div>
+
+                <div class="stat-label">
+                    Recent Activity
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SEARCH -->
+
+        <div class="history-tools">
+
+            <div class="search-box">
+
+                <span class="search-icon">
+                    🔍
+                </span>
+
+                <input
+                    type="text"
+                    id="historySearch"
+                    placeholder="Search your translations...">
+
+            </div>
+
+
+            <button
+                type="button"
+                id="clearHistoryButton">
+
+                🗑 Clear History
+
+            </button>
+
+        </div>
+
+
+        <!-- HISTORY LIST -->
+
+        <div id="historyList">
+        </div>
+
+
+        <!-- EMPTY STATE -->
+
+        <div
+            class="empty-history"
+            id="emptyHistory"
+            style="display: none;">
+
+            <div class="empty-icon">
+                🕘
+            </div>
+
+            <h3>
+                No translations yet
+            </h3>
+
+            <p>
+                Your completed translations will appear here.
+            </p>
+
+            <a
+                href="translate.html"
+                class="translate-link">
+
+                Start Translating →
+
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div class="footer-logo">
+                ☁️ Cloud<span>Translate</span>
+            </div>
+
+            <p>
+                © 2026 CloudTranslate. Cloud-based language translation system.
+            </p>
+
+            <div class="footer-links">
 
                 <a href="index.html">
                     Home
@@ -1627,596 +669,327 @@
                     Translate
                 </a>
 
-                <a
-                    href="history.html"
-                    class="active"
-                >
+                <a href="history.html">
                     History
                 </a>
-
-                <a href="login.html">
-                    Logout
-                </a>
-
-                <button
-                    id="themeToggle"
-                    class="theme-toggle"
-                    aria-label="Toggle dark mode"
-                >
-                    🌙
-                </button>
 
             </div>
 
         </div>
-
-    </nav>
-
-
-    <!-- =========================
-         MAIN CONTENT
-    ========================= -->
-
-    <main class="history-page">
-
-
-        <!-- HERO -->
-
-        <section class="history-hero">
-
-            <div class="history-hero-content">
-
-                <span class="history-hero-badge">
-                    🕘 TRANSLATION ACTIVITY
-                </span>
-
-                <h1>
-                    Your Translation History
-                </h1>
-
-                <p>
-                    Track, review and manage your
-                    recent translation activity
-                    in one place.
-                </p>
-
-            </div>
-
-
-            <div class="history-hero-icon">
-                ☁️
-            </div>
-
-        </section>
-
-
-        <!-- FEATURE CARDS -->
-
-        <section class="history-features">
-
-
-            <div class="history-feature-card">
-
-                <div class="history-feature-icon">
-                    🌍
-                </div>
-
-                <div>
-
-                    <h3>
-                        Multiple Languages
-                    </h3>
-
-                    <p>
-                        Translate text between
-                        different supported languages.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="history-feature-card">
-
-                <div class="history-feature-icon">
-                    ⚡
-                </div>
-
-                <div>
-
-                    <h3>
-                        Fast Translation
-                    </h3>
-
-                    <p>
-                        Send translation requests
-                        and receive results quickly.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="history-feature-card">
-
-                <div class="history-feature-icon">
-                    ☁️
-                </div>
-
-                <div>
-
-                    <h3>
-                        Cloud Powered
-                    </h3>
-
-                    <p>
-                        Uses cloud infrastructure
-                        for reliable processing.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="history-feature-card">
-
-                <div class="history-feature-icon">
-                    🔐
-                </div>
-
-                <div>
-
-                    <h3>
-                        Secure Access
-                    </h3>
-
-                    <p>
-                        User authentication can be
-                        handled through cloud services.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-        </section>
-
-
-        <!-- STATISTICS -->
-
-        <section class="history-stats">
-
-
-            <div class="history-stat-card">
-
-                <div class="history-stat-icon">
-                    🌐
-                </div>
-
-                <div>
-
-                    <span>
-                        Total Translations
-                    </span>
-
-                    <strong id="totalTranslations">
-                        0
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-            <div class="history-stat-card">
-
-                <div class="history-stat-icon">
-                    📝
-                </div>
-
-                <div>
-
-                    <span>
-                        Characters Translated
-                    </span>
-
-                    <strong id="totalCharacters">
-                        0
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-            <div class="history-stat-card">
-
-                <div class="history-stat-icon">
-                    🕒
-                </div>
-
-                <div>
-
-                    <span>
-                        Last Translation
-                    </span>
-
-                    <strong id="lastTranslation">
-                        None
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-        </section>
-
-
-        <!-- HISTORY TABLE -->
-
-        <section class="history-card">
-
-
-            <div class="history-card-header">
-
-                <div>
-
-                    <span class="history-section-label">
-                        RECENT ACTIVITY
-                    </span>
-
-                    <h2>
-                        Recent Translations
-                    </h2>
-
-                    <p>
-                        Click a translation to view
-                        its complete details.
-                    </p>
-
-                </div>
-
-
-                <button
-                    id="clearHistoryButton"
-                    class="clear-history-button"
-                >
-                    🗑️ Clear History
-                </button>
-
-            </div>
-
-
-            <div class="history-table-wrapper">
-
-                <table>
-
-                    <thead>
-
-                        <tr>
-
-                            <th>
-                                Date
-                            </th>
-
-                            <th>
-                                From
-                            </th>
-
-                            <th>
-                                To
-                            </th>
-
-                            <th>
-                                Original Text
-                            </th>
-
-                            <th>
-                                Translation
-                            </th>
-
-                            <th>
-                                Action
-                            </th>
-
-                        </tr>
-
-                    </thead>
-
-
-                    <tbody id="historyTableBody">
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </section>
-
-
-        <!-- INFO CARDS -->
-
-        <section class="history-info-grid">
-
-
-            <div class="history-info-card">
-
-                <div class="history-info-icon">
-                    📊
-                </div>
-
-                <h3>
-                    Your Activity
-                </h3>
-
-                <p>
-                    Keep track of your previous
-                    translation activity and
-                    character usage.
-                </p>
-
-            </div>
-
-
-            <div class="history-info-card">
-
-                <div class="history-info-icon">
-                    ⚡
-                </div>
-
-                <h3>
-                    Quick Translation
-                </h3>
-
-                <p>
-                    Return to the translation
-                    page whenever you need
-                    another translation.
-                </p>
-
-            </div>
-
-
-            <div class="history-info-card">
-
-                <div class="history-info-icon">
-                    ☁️
-                </div>
-
-                <h3>
-                    CloudTranslate
-                </h3>
-
-                <p>
-                    A cloud-based translation
-                    system designed for fast
-                    and convenient language access.
-                </p>
-
-            </div>
-
-
-        </section>
-
-
-        <!-- START TRANSLATION -->
-
-        <section class="history-action">
-
-            <div>
-
-                <h2>
-                    Need another translation?
-                </h2>
-
-                <p>
-                    Start a new translation
-                    whenever you are ready.
-                </p>
-
-            </div>
-
-
-            <a
-                href="translate.html"
-                class="history-main-button"
-            >
-                Start New Translation →
-            </a>
-
-        </section>
-
-
-    </main>
-
-
-    <!-- FOOTER -->
-
-    <footer class="footer">
-
-        <p>
-            © 2026 CloudTranslate.
-            Cloud-Based Language Translation System.
-        </p>
 
     </footer>
 
 
-    <!-- =========================
-         TRANSLATION DETAILS MODAL
-    ========================= -->
-
-    <div
-        id="translationModal"
-        class="translation-modal"
-    >
-
-        <div
-            class="translation-modal-box"
-        >
-
-
-            <button
-                id="closeTranslationModal"
-                class="close-translation-modal"
-                aria-label="Close"
-            >
-                ✕
-            </button>
-
-
-            <div class="translation-modal-icon">
-                🌐
-            </div>
-
-
-            <h2>
-                Translation Details
-            </h2>
-
-
-            <p class="translation-modal-date">
-
-                <span id="modalDate">
-                    -
-                </span>
-
-            </p>
-
-
-            <div class="modal-language-flow">
-
-                <span id="modalFromLanguage">
-                    English
-                </span>
-
-                <span class="modal-arrow">
-                    →
-                </span>
-
-                <span id="modalToLanguage">
-                    Hindi
-                </span>
-
-            </div>
-
-
-            <div class="modal-text-section">
-
-                <h3>
-                    📝 Original Text
-                </h3>
-
-                <div
-                    id="modalOriginalText"
-                    class="modal-text-box"
-                >
-                    -
-                </div>
-
-            </div>
-
-
-            <div class="modal-text-section">
-
-                <h3>
-                    🔄 Translation
-                </h3>
-
-                <div
-                    id="modalTranslatedText"
-                    class="modal-text-box translated-modal-text"
-                >
-                    -
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-
-    <!-- HISTORY JAVASCRIPT -->
-
-    <script src="js/history.js"></script>
-
-
-    <!-- DARK MODE -->
+    <!-- ================= HISTORY SCRIPT ================= -->
 
     <script>
 
-        const themeToggle =
-            document.getElementById(
-                "themeToggle"
-            );
+        const historyList =
+            document.getElementById("historyList");
+
+        const emptyHistory =
+            document.getElementById("emptyHistory");
+
+        const searchInput =
+            document.getElementById("historySearch");
+
+        const clearButton =
+            document.getElementById("clearHistoryButton");
+
+        const totalTranslations =
+            document.getElementById("totalTranslations");
+
+        const recentCount =
+            document.getElementById("recentCount");
 
 
-        const savedTheme =
-            localStorage.getItem(
-                "cloudTranslateTheme"
-            );
+        function getHistory() {
 
+            try {
 
-        if (savedTheme === "dark") {
+                const saved =
+                    JSON.parse(
+                        localStorage.getItem("translationHistory")
+                    );
 
-            document.body.classList.add(
-                "dark-mode"
-            );
+                return Array.isArray(saved) ? saved : [];
 
-            themeToggle.innerText =
-                "☀️";
+            } catch (error) {
+
+                return [];
+
+            }
 
         }
 
 
-        themeToggle.addEventListener(
+        function formatDate(item) {
+
+            if (item.date) {
+                return item.date;
+            }
+
+            if (item.timestamp) {
+
+                return new Date(
+                    item.timestamp
+                ).toLocaleString();
+
+            }
+
+            return "Recent";
+
+        }
+
+
+        function getValue(item, keys) {
+
+            for (const key of keys) {
+
+                if (
+                    item[key] !== undefined &&
+                    item[key] !== null &&
+                    item[key] !== ""
+                ) {
+
+                    return item[key];
+
+                }
+
+            }
+
+            return "";
+
+        }
+
+
+        function renderHistory(searchTerm = "") {
+
+            const history =
+                getHistory();
+
+            totalTranslations.textContent =
+                history.length;
+
+            recentCount.textContent =
+                history.length > 0
+                    ? Math.min(history.length, 5)
+                    : 0;
+
+
+            const search =
+                searchTerm.toLowerCase().trim();
+
+
+            const filtered =
+                history.filter(item => {
+
+                    const source =
+                        getValue(item, [
+                            "sourceText",
+                            "source",
+                            "originalText",
+                            "text"
+                        ]);
+
+                    const translation =
+                        getValue(item, [
+                            "translatedText",
+                            "translation",
+                            "translated"
+                        ]);
+
+                    const combined =
+                        (
+                            source +
+                            " " +
+                            translation
+                        ).toLowerCase();
+
+                    return combined.includes(search);
+
+                });
+
+
+            historyList.innerHTML = "";
+
+
+            if (filtered.length === 0) {
+
+                historyList.style.display = "none";
+                emptyHistory.style.display = "block";
+
+                return;
+
+            }
+
+
+            historyList.style.display = "flex";
+            emptyHistory.style.display = "none";
+
+
+            filtered.forEach(item => {
+
+                const source =
+                    getValue(item, [
+                        "sourceText",
+                        "source",
+                        "originalText",
+                        "text"
+                    ]) || "No source text";
+
+
+                const translation =
+                    getValue(item, [
+                        "translatedText",
+                        "translation",
+                        "translated"
+                    ]) || "No translation";
+
+
+                const sourceLanguage =
+                    getValue(item, [
+                        "sourceLanguage",
+                        "sourceLang"
+                    ]) || "Source";
+
+
+                const targetLanguage =
+                    getValue(item, [
+                        "targetLanguage",
+                        "targetLang"
+                    ]) || "Target";
+
+
+                const date =
+                    formatDate(item);
+
+
+                const card =
+                    document.createElement("div");
+
+                card.className =
+                    "history-item";
+
+
+                card.innerHTML = `
+
+                    <div class="history-top">
+
+                        <span class="language-pair">
+                            ${sourceLanguage}
+                            →
+                            ${targetLanguage}
+                        </span>
+
+                        <span class="history-date">
+                            🕘 ${date}
+                        </span>
+
+                    </div>
+
+
+                    <div class="translation-content">
+
+                        <div class="text-side">
+
+                            <div class="text-label">
+                                Original
+                            </div>
+
+                            <div class="original-text">
+                                ${escapeHtml(source)}
+                            </div>
+
+                        </div>
+
+
+                        <div class="text-side">
+
+                            <div class="text-label">
+                                Translation
+                            </div>
+
+                            <div class="translated-text">
+                                ${escapeHtml(translation)}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+
+                historyList.appendChild(card);
+
+            });
+
+        }
+
+
+        function escapeHtml(text) {
+
+            const div =
+                document.createElement("div");
+
+            div.textContent =
+                String(text);
+
+            return div.innerHTML;
+
+        }
+
+
+        searchInput.addEventListener(
+            "input",
+            function () {
+
+                renderHistory(
+                    searchInput.value
+                );
+
+            }
+        );
+
+
+        clearButton.addEventListener(
             "click",
             function () {
 
-                document.body.classList.toggle(
-                    "dark-mode"
-                );
+                const history =
+                    getHistory();
+
+                if (history.length === 0) {
+
+                    return;
+
+                }
 
 
-                if (
-                    document.body.classList.contains(
-                        "dark-mode"
-                    )
-                ) {
-
-                    themeToggle.innerText =
-                        "☀️";
-
-                    localStorage.setItem(
-                        "cloudTranslateTheme",
-                        "dark"
+                const confirmation =
+                    confirm(
+                        "Are you sure you want to clear your translation history?"
                     );
 
-                } else {
 
-                    themeToggle.innerText =
-                        "🌙";
+                if (confirmation) {
 
-                    localStorage.setItem(
-                        "cloudTranslateTheme",
-                        "light"
+                    localStorage.removeItem(
+                        "translationHistory"
                     );
+
+                    renderHistory();
 
                 }
 
             }
         );
 
-    </script>
 
+        renderHistory();
+
+    </script>
 
 </body>
 

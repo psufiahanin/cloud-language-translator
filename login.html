@@ -2,26 +2,16 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Login - CloudTranslate</title>
 
-    <link rel="stylesheet" href="css/style.css">
 
     <style>
-        :root {
-            --cream: #faf7ef;
-            --cream-dark: #f1eadb;
-            --sage: #dce8df;
-            --sage-light: #edf4ee;
-            --teal: #2f6f68;
-            --dark-teal: #174f4a;
-            --text: #18322f;
-            --muted: #647874;
-            --white: #ffffff;
-            --border: #dce5df;
-        }
 
         * {
             margin: 0;
@@ -29,368 +19,900 @@
             box-sizing: border-box;
         }
 
+
         body {
+
             font-family: Arial, Helvetica, sans-serif;
-            background: var(--cream);
-            color: var(--text);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f8f1e7,
+                    #efe1d1
+                );
+
+            color: #3d3028;
+
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+
         }
+
 
         /* NAVBAR */
 
-        .navbar {
-            width: 100%;
-            height: 72px;
-            background: rgba(255, 255, 255, 0.95);
-            border-bottom: 1px solid var(--border);
+        nav {
+
+            background: rgba(255, 250, 244, 0.95);
+
+            border-bottom: 1px solid #eadfd2;
+
+            padding: 18px 7%;
+
             display: flex;
-            align-items: center;
+
             justify-content: space-between;
-            padding: 0 8%;
+
+            align-items: center;
+
         }
+
 
         .logo {
-            font-size: 21px;
-            font-weight: 700;
-            color: var(--dark-teal);
+
+            font-size: 23px;
+
+            font-weight: bold;
+
+            color: #6b4f3f;
+
         }
+
+
+        .nav-links {
+
+            display: flex;
+
+            gap: 25px;
+
+        }
+
 
         .nav-links a {
+
             text-decoration: none;
-            color: var(--teal);
+
+            color: #66564b;
+
+            font-size: 14px;
+
             font-weight: 600;
-            padding: 10px 18px;
-            border-radius: 8px;
-            transition: 0.3s;
+
         }
+
 
         .nav-links a:hover {
-            background: var(--sage-light);
-            color: var(--dark-teal);
+
+            color: #9a6b45;
+
         }
 
-        /* MAIN */
+
+        /* LOGIN AREA */
 
         .login-container {
-            flex: 1;
+
+            min-height: calc(100vh - 72px);
+
             display: flex;
-            justify-content: center;
+
             align-items: center;
-            padding: 55px 20px;
+
+            justify-content: center;
+
+            padding: 45px 20px;
+
+        }
+
+
+        .login-wrapper {
+
+            width: 900px;
+
+            max-width: 100%;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            background: #fffaf4;
+
+            border: 1px solid #eadfd2;
+
+            border-radius: 25px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 20px 50px rgba(83, 61, 44, 0.12);
+
+        }
+
+
+        /* LEFT SIDE */
+
+        .login-info {
 
             background:
-                radial-gradient(
-                    circle at top left,
-                    var(--sage-light),
-                    transparent 35%
-                ),
-                var(--cream);
-        }
+                linear-gradient(
+                    145deg,
+                    #e9d6c2,
+                    #d9c0a8
+                );
 
-        .login-card {
-            width: 100%;
-            max-width: 450px;
-            background: var(--white);
-            padding: 42px 40px;
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            box-shadow: 0 18px 45px rgba(23, 79, 74, 0.10);
-            text-align: center;
-        }
-
-        .login-icon {
-            width: 68px;
-            height: 68px;
-            margin: 0 auto 20px;
+            padding: 50px 40px;
 
             display: flex;
-            align-items: center;
+
+            flex-direction: column;
+
             justify-content: center;
 
-            background: var(--sage);
-            border-radius: 18px;
-            font-size: 32px;
         }
 
-        .login-card h1 {
-            color: var(--dark-teal);
-            font-size: 30px;
-            margin-bottom: 9px;
+
+        .cloud-icon {
+
+            font-size: 55px;
+
+            margin-bottom: 20px;
+
         }
+
+
+        .login-info h1 {
+
+            font-size: 34px;
+
+            color: #4d382c;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .login-info p {
+
+            color: #705d4e;
+
+            line-height: 1.7;
+
+            font-size: 14px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .benefits {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 13px;
+
+        }
+
+
+        .benefit {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-size: 13px;
+
+            color: #5f4a3b;
+
+        }
+
+
+        .benefit-icon {
+
+            width: 30px;
+
+            height: 30px;
+
+            border-radius: 50%;
+
+            background: #fffaf4;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        /* RIGHT SIDE */
+
+        .login-box {
+
+            padding: 50px 45px;
+
+            background: #fffaf4;
+
+        }
+
+
+        .login-box h2 {
+
+            font-size: 28px;
+
+            color: #4c392e;
+
+            margin-bottom: 8px;
+
+        }
+
 
         .login-subtitle {
-            color: var(--muted);
-            font-size: 15px;
+
+            color: #89776a;
+
+            font-size: 13px;
+
             margin-bottom: 30px;
+
         }
+
 
         /* FORM */
 
         .form-group {
-            text-align: left;
+
             margin-bottom: 20px;
+
         }
+
 
         .form-group label {
+
             display: block;
-            color: var(--dark-teal);
-            font-size: 14px;
-            font-weight: 700;
+
             margin-bottom: 8px;
+
+            color: #5d493c;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
         }
+
+
+        .input-wrapper {
+
+            position: relative;
+
+        }
+
+
+        .input-icon {
+
+            position: absolute;
+
+            left: 14px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            font-size: 17px;
+
+        }
+
 
         .form-group input {
+
             width: 100%;
-            padding: 14px 15px;
 
-            border: 1px solid var(--border);
-            border-radius: 10px;
+            padding: 14px 14px 14px 43px;
 
-            background: #fcfdfc;
-            color: var(--text);
+            border: 1px solid #dfd0c1;
 
-            font-size: 15px;
+            border-radius: 12px;
+
+            background: #fffdf9;
+
+            color: #4d3b30;
+
             outline: none;
 
-            transition: 0.3s;
+            font-size: 14px;
+
+            transition: 0.2s;
+
         }
+
 
         .form-group input:focus {
-            border-color: var(--teal);
+
+            border-color: #b58b68;
 
             box-shadow:
-                0 0 0 3px
-                rgba(47, 111, 104, 0.10);
+                0 0 0 3px rgba(181, 139, 104, 0.12);
+
         }
 
-        .form-group input::placeholder {
-            color: #91a19d;
-        }
-
-        /* LOGIN BUTTON */
 
         .login-button {
+
             width: 100%;
 
             border: none;
-            border-radius: 10px;
 
             padding: 15px;
-            margin-top: 5px;
 
-            background: var(--dark-teal);
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #8c6448,
+                    #a97853
+                );
+
             color: white;
 
-            font-size: 16px;
-            font-weight: 700;
+            font-size: 15px;
+
+            font-weight: bold;
 
             cursor: pointer;
-            transition: 0.3s;
+
+            transition: 0.2s;
+
+            margin-top: 5px;
+
         }
+
 
         .login-button:hover {
-            background: var(--teal);
 
-            transform: translateY(-1px);
+            transform: translateY(-2px);
 
             box-shadow:
-                0 8px 20px
-                rgba(23, 79, 74, 0.18);
+                0 8px 20px rgba(112, 76, 48, 0.2);
+
         }
 
-        /* NOTE */
 
-        .login-note {
-            margin-top: 24px;
+        .login-message {
 
-            padding: 13px 15px;
+            text-align: center;
 
-            background: var(--sage-light);
+            margin-top: 15px;
 
-            border: 1px solid var(--border);
-            border-radius: 10px;
+            font-size: 13px;
 
-            color: var(--muted);
+            min-height: 18px;
+
+        }
+
+
+        .divider {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin: 25px 0;
+
+            color: #aa998c;
 
             font-size: 12px;
-            line-height: 1.6;
+
         }
+
+
+        .divider::before,
+        .divider::after {
+
+            content: "";
+
+            height: 1px;
+
+            background: #e4d8cc;
+
+            flex: 1;
+
+        }
+
+
+        .demo-note {
+
+            text-align: center;
+
+            color: #89776a;
+
+            font-size: 12px;
+
+            line-height: 1.6;
+
+        }
+
+
+        .back-home {
+
+            display: block;
+
+            text-align: center;
+
+            margin-top: 22px;
+
+            color: #8c6448;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+        }
+
+
+        .back-home:hover {
+
+            text-decoration: underline;
+
+        }
+
 
         /* FOOTER */
 
         footer {
-            background: var(--dark-teal);
-            color: white;
 
             text-align: center;
 
-            padding: 28px 20px;
+            padding: 20px;
+
+            color: #8a786b;
+
+            font-size: 12px;
+
         }
 
-        footer .logo {
-            color: white;
-            margin-bottom: 8px;
+
+        /* RESPONSIVE */
+
+        @media (max-width: 750px) {
+
+            .login-wrapper {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .login-info {
+
+                padding: 35px;
+
+                text-align: center;
+
+            }
+
+
+            .benefits {
+
+                align-items: center;
+
+            }
+
+
+            .login-box {
+
+                padding: 40px 30px;
+
+            }
+
         }
 
-        footer p {
-            margin: 5px 0;
-
-            font-size: 13px;
-            color: #dce8df;
-        }
-
-        footer .copyright {
-            margin-top: 10px;
-            color: #b8ccc7;
-        }
-
-        /* MOBILE */
 
         @media (max-width: 600px) {
 
-            .navbar {
-                padding: 0 5%;
+            nav {
+
+                padding: 15px 5%;
+
             }
+
 
             .logo {
-                font-size: 18px;
+
+                font-size: 19px;
+
             }
 
-            .login-container {
-                padding: 35px 16px;
+
+            .nav-links {
+
+                display: none;
+
             }
 
-            .login-card {
-                padding: 34px 24px;
+
+            .login-info h1 {
+
+                font-size: 28px;
+
             }
 
-            .login-card h1 {
-                font-size: 26px;
-            }
         }
+
     </style>
 
 </head>
 
-<body class="login-page">
+
+<body>
+
 
     <!-- NAVBAR -->
 
-    <nav class="navbar">
+    <nav>
 
         <div class="logo">
+
             ☁️ CloudTranslate
+
         </div>
+
 
         <div class="nav-links">
 
-            <a href="index.html">
-                Home
-            </a>
+            <a href="index.html">Home</a>
+
+            <a href="translate.html">Translate</a>
+
+            <a href="history.html">History</a>
+
+            <a href="dashboard.html">Dashboard</a>
 
         </div>
 
     </nav>
 
 
+
     <!-- LOGIN -->
 
     <main class="login-container">
 
-        <div class="login-card">
 
-            <div class="login-icon">
-                ☁️
-            </div>
-
-            <h1>
-                Welcome Back
-            </h1>
-
-            <p class="login-subtitle">
-                Login to continue to CloudTranslate
-            </p>
+        <div class="login-wrapper">
 
 
-            <form
-                id="loginForm"
-                onsubmit="loginUser(event)"
-            >
+            <!-- LEFT -->
 
-                <div class="form-group">
+            <section class="login-info">
 
-                    <label for="email">
-                        Email Address
-                    </label>
+                <div class="cloud-icon">
 
-                    <input
-                        type="email"
-                        id="email"
-                        placeholder="Enter your email"
-                        required
-                    >
+                    ☁️
 
                 </div>
 
 
-                <div class="form-group">
+                <h1>
 
-                    <label for="password">
-                        Password
-                    </label>
+                    Welcome Back
 
-                    <input
-                        type="password"
-                        id="password"
-                        placeholder="Enter your password"
-                        required
-                    >
+                </h1>
+
+
+                <p>
+
+                    Sign in to CloudTranslate and continue
+                    translating your text across multiple
+                    languages using our cloud-based system.
+
+                </p>
+
+
+                <div class="benefits">
+
+
+                    <div class="benefit">
+
+                        <div class="benefit-icon">
+
+                            ⚡
+
+                        </div>
+
+                        Fast Translation
+
+                    </div>
+
+
+                    <div class="benefit">
+
+                        <div class="benefit-icon">
+
+                            🌐
+
+                        </div>
+
+                        Multiple Languages
+
+                    </div>
+
+
+                    <div class="benefit">
+
+                        <div class="benefit-icon">
+
+                            ☁️
+
+                        </div>
+
+                        Cloud Powered
+
+                    </div>
+
+
+                    <div class="benefit">
+
+                        <div class="benefit-icon">
+
+                            🕘
+
+                        </div>
+
+                        Translation History
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- RIGHT -->
+
+            <section class="login-box">
+
+
+                <h2>
+
+                    Sign In
+
+                </h2>
+
+
+                <p class="login-subtitle">
+
+                    Enter your details to continue.
+
+                </p>
+
+
+                <form id="loginForm">
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+
+                            Email Address
+
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+
+                                ✉️
+
+                            </span>
+
+
+                            <input
+
+                                type="email"
+
+                                id="email"
+
+                                placeholder="Enter your email"
+
+                                required
+
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="password">
+
+                            Password
+
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+
+                                🔒
+
+                            </span>
+
+
+                            <input
+
+                                type="password"
+
+                                id="password"
+
+                                placeholder="Enter your password"
+
+                                required
+
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- BUTTON -->
+
+                    <button
+
+                        type="submit"
+
+                        class="login-button">
+
+                        Sign In →
+
+                    </button>
+
+
+                    <div
+
+                        id="loginMessage"
+
+                        class="login-message">
+
+                    </div>
+
+
+                </form>
+
+
+                <div class="divider">
+
+                    CloudTranslate
 
                 </div>
 
 
-                <button
-                    type="submit"
-                    class="login-button"
-                >
-                    Login →
-                </button>
+                <p class="demo-note">
 
-            </form>
+                    This project currently uses a simple
+                    demonstration login system.
+                    Enter any valid email and password
+                    to continue.
+
+                </p>
 
 
-            <p class="login-note">
-                🔐 Secure authentication will be connected
-                with Amazon Cognito.
-            </p>
+                <a
+
+                    href="index.html"
+
+                    class="back-home">
+
+                    ← Back to Home
+
+                </a>
+
+
+            </section>
+
 
         </div>
 
     </main>
 
 
-    <!-- FOOTER -->
 
     <footer>
 
-        <div class="logo">
-            ☁️ CloudTranslate
-        </div>
-
-        <p>
-            Cloud-Based Language Translation System
-        </p>
-
-        <p class="copyright">
-            © 2026 CloudTranslate
-        </p>
+        © 2026 CloudTranslate • Cloud-Based Language Translation System
 
     </footer>
 
 
-    <script src="js/login.js"></script>
+
+    <!-- LOGIN FUNCTION -->
+
+    <script>
+
+        const loginForm =
+            document.getElementById("loginForm");
+
+        const loginMessage =
+            document.getElementById("loginMessage");
+
+
+        loginForm.addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                const email =
+                    document.getElementById("email").value.trim();
+
+                const password =
+                    document.getElementById("password").value.trim();
+
+
+                if (!email || !password) {
+
+                    loginMessage.textContent =
+                        "Please enter your email and password.";
+
+                    loginMessage.style.color =
+                        "#b44f45";
+
+                    return;
+
+                }
+
+
+                loginMessage.textContent =
+                    "Login successful! Redirecting...";
+
+                loginMessage.style.color =
+                    "#6c8b62";
+
+
+                setTimeout(function() {
+
+                    window.location.href =
+                        "translate.html";
+
+                }, 700);
+
+            }
+        );
+
+    </script>
+
 
 </body>
 

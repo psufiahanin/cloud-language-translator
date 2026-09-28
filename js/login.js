@@ -1,30 +1,48 @@
-// =========================
-// CLOUDTRANSLATE - LOGIN
-// =========================
+const loginForm = document.getElementById("loginForm");
+const loginMessage = document.getElementById("loginMessage");
 
-function loginUser(event) {
+if (loginForm) {
 
-    event.preventDefault();
+    loginForm.addEventListener("submit", function (event) {
 
-    const email =
-        document.getElementById("email").value.trim();
+        event.preventDefault();
 
-    const password =
-        document.getElementById("password").value.trim();
+        const email =
+            document.getElementById("email").value.trim();
 
-
-    if (email === "" || password === "") {
-
-        alert("Please enter your email and password.");
-
-        return;
-
-    }
+        const password =
+            document.getElementById("password").value.trim();
 
 
-    // Temporary login
-    // Real authentication will be connected using Amazon Cognito later.
+        if (!email || !password) {
 
-    window.location.href = "translate.html";
+            if (loginMessage) {
+
+                loginMessage.textContent =
+                    "Please enter your email and password.";
+
+                loginMessage.style.color = "#b44f45";
+            }
+
+            return;
+        }
+
+
+        if (loginMessage) {
+
+            loginMessage.textContent =
+                "Login successful! Redirecting...";
+
+            loginMessage.style.color = "#6c8b62";
+        }
+
+
+        setTimeout(function () {
+
+            window.location.href = "translate.html";
+
+        }, 700);
+
+    });
 
 }
